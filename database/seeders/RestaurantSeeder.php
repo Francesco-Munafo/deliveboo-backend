@@ -19,7 +19,6 @@ class RestaurantSeeder extends Seeder
         $new_restaurant->slug = Str::slug($new_restaurant->name, '-');
         $new_restaurant->address = 'Via dei Mille, 78';
         $new_restaurant->description = 'Il nostro ristorante è molto bello, siediti a mangia roba buona';
-        $new_restaurant->vat_number = '86334519757';
         $new_restaurant->image = 'https://www.ristoranteallalega.com/photos/ristorante.jpg';
 
         $new_restaurant->save();
