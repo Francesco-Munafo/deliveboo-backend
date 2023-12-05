@@ -27,6 +27,9 @@ Route::middleware('auth')
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
         Route::resource('/restaurants', RestaurantController::class)->parameters(['restaurants' => 'restaurant:slug']);
+        Route::get('trash', [RestaurantController::class, 'trashed'])->name('trash');
+        Route::put('trash/{restaurant}/restore', [RestaurantController::class, 'restoreTrashed'])->name('restore');
+        Route::delete('trash/{restaurant}/destroy', [RestaurantController::class, 'forceDelete'])->name('forceDelete');
     });
 
 

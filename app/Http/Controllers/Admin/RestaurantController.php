@@ -44,12 +44,12 @@ class RestaurantController extends Controller
             $validated['image'] = $file_path;
         }
 
-        $validated['slug'] =  Restaurant::generateSlug($validated['name']);
+        $validated['slug'] =  Restaurant::generateSlug($validated['name'], '-');
 
         $restaurant = Restaurant::create($validated);
         $restaurant->types()->attach($request->types);
 
-        return to_route("admin.restaurants.index");
+        return to_route("admin.restaurants.index")->with('message', 'Ristorante creato con successo!');
     }
 
     /**
@@ -93,14 +93,33 @@ class RestaurantController extends Controller
         $restaurant->types()->sync($request->types);
         $restaurant->update($validated);
 
-        return to_route('admin.restaurants.show', $restaurant)->with('message', 'Restaurant infos updated succefully!');
+
+        return to_route('admin.restaurant.show', $restaurant)->with('message', 'Informazioni aggiornate con successo!');
+
+
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Restaurant $restaurant)
+    public function destroy($slug)
     {
-        //
+        $restaurant = Restaurant::withTrashed()->where('slug', '=', $slug)->first();
+
+        $restaurant->delete();
+
+        return to_route('admin.dashboard')->with('message', 'Ristorante aggiunto al cestino!');
+    }
+
+    public function forceDelete($slug)
+    {
+        $restaurant = Restaurant::withTrashed()->where('slug', '=', $slug)->first();
+
+        $restaurant->types()->detach();
+
+        $restaurant->forceDelete();
+
+        return to_route('admin.trash')->with('message', 'Ristorante eliminato con successo!');
     }
 }
