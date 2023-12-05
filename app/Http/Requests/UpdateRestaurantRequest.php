@@ -20,7 +20,7 @@ class UpdateRestaurantRequest extends FormRequest
             'name' => 'required|min:2|max:50',
             'address' => 'required',
             'description' => 'nullable',
-            'image' => 'required|image',
+            'image' => 'nullable|image',
             'types' => 'required',
         ];
     }

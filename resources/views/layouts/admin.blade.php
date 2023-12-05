@@ -101,17 +101,27 @@
 
                             </li>
 
-                        </ul>
-
-                        <ul class="nav flex-column">
                             <li class="nav-item">
 
                                 <a style="padding-left: 12px"
                                     class="nav-link text-white {{ Route::currentRouteName() == 'profile.edit' ? 'bg-secondary' : '' }}"
                                     href="{{ route('profile.edit') }}">
                                     <div class="d-flex gap-1 align-items-center">
-                                        <i class="fs-4 fa-solid fa-tachometer-alt fa-lg fa-fw"></i>
+                                        <i class="fs-4 fa-solid fa-user fa-lg fa-fw"></i>
                                         Profile
+                                    </div>
+                                </a>
+
+                            </li>
+
+                            <li class="nav-item">
+
+                                <a style="padding-left: 12px"
+                                    class="nav-link text-white {{ Route::currentRouteName() == 'admin.trash' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.trash') }}">
+                                    <div class="d-flex gap-1 align-items-center">
+                                        <i class="fs-4 fa-solid fa-trash fa-lg fa-fw"></i>
+                                        Cestino
                                     </div>
                                 </a>
 

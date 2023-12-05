@@ -94,12 +94,24 @@ class RestaurantController extends Controller
         $restaurant->update($validated);
 
 
-        return to_route('admin.restaurant.show', $restaurant)->with('message', 'Informazioni aggiornate con successo!');
-
-
-
+        return to_route('admin.restaurants.show', $restaurant)->with('message', 'Informazioni aggiornate con successo!');
     }
 
+    public function trashed()
+    {
+        $trashed = Restaurant::onlyTrashed()->paginate(5);
+
+        return view('admin.restaurants.deleted', compact('trashed'));
+    }
+
+    public function restoreTrashed($slug)
+    {
+        $restaurant = Restaurant::withTrashed()->where('slug', '=', $slug)->first();
+
+        $restaurant->restore();
+
+        return to_route('admin.trash')->with('message', 'Ristorante ripristinato con successo!');
+    }
     /**
      * Remove the specified resource from storage.
      */

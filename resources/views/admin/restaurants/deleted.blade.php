@@ -88,21 +88,21 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title"
-                                                            id="modalTitleId-{{ $trashed_restaurant->id }}">Deleting your
-                                                            restaurant "{{ $trashed_restaurant->title }}"
+                                                            id="modalTitleId-{{ $trashed_restaurant->id }}">Stai
+                                                            cancellando il tuo ristorante
+                                                            "{{ $trashed_restaurant->name }}"
                                                         </h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Warning! This is an irreversible operation! Doing this you'll delete
-                                                        your
-                                                        restaurant <span
-                                                            class="text-decoration-underline text-danger">permanently!</span>
+                                                        Attenzione! Questa operazione è irreversibile! Questa operazione
+                                                        cancellerà il tuo ristorante <span
+                                                            class="text-decoration-underline text-danger">permanentemente!</span>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">Dismiss</button>
+                                                            data-bs-dismiss="modal">Annulla</button>
 
                                                         <form
                                                             action="{{ route('admin.forceDelete', $trashed_restaurant->slug) }}"
@@ -110,7 +110,7 @@
                                                             @csrf
                                                             @method('DELETE')
 
-                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                            <button type="submit" class="btn btn-danger">Elimina</button>
 
                                                         </form>
                                                     </div>
