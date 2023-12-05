@@ -26,7 +26,12 @@
         <div class="d-flex gap-4 flex-wrap">
             @foreach ($restaurants as $restaurant)
                 <div class="card" style="width:18rem;">
-                    <img src={{ $restaurant->image }} class="card-img-top" alt="...">
+                    {{-- <img src={{ $restaurant->image }} class="card-img-top" alt="..."> --}}
+                    @if (str_contains($restaurant->image, 'https'))
+                        <img src="{{ $restaurant->image }}">
+                    @else
+                        <img src="{{ asset('storage/' . $restaurant->image) }}" alt="..">
+                    @endif
                     <div class="card-body">
                         <h5 class="card-title">{{ $restaurant->name }}</h5>
                         <h6 class="card-subtitle mb-2 text-muted ">{{ $restaurant->address }}</h6>
