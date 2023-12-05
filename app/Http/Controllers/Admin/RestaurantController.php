@@ -90,26 +90,10 @@ class RestaurantController extends Controller
             $validated['slug'] = $restaurant->generateSlug($request->name);
         }
 
-        $restaurant->types()->sync($request->type);
+        $restaurant->types()->sync($request->types);
         $restaurant->update($validated);
 
         return to_route('admin.restaurant.show', $restaurant)->with('message', 'Informazioni aggiornate con successo!');
-    }
-
-    public function trashed()
-    {
-        $trashed = Restaurant::onlyTrashed()->paginate(5);
-
-        return view('admin.restaurants.deleted', compact('trashed'));
-    }
-
-    public function restoreTrashed($slug)
-    {
-        $restaurant = Restaurant::withTrashed()->where('slug', '=', $slug)->first();
-
-        $restaurant->restore();
-
-        return to_route('admin.trash')->with('message', 'Ristorante ripristinato con successo!');
     }
 
     /**
