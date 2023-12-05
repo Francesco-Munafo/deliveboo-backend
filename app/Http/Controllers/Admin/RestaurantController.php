@@ -93,7 +93,11 @@ class RestaurantController extends Controller
         $restaurant->types()->sync($request->types);
         $restaurant->update($validated);
 
+
         return to_route('admin.restaurant.show', $restaurant)->with('message', 'Informazioni aggiornate con successo!');
+
+
+
     }
 
     /**
