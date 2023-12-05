@@ -6,7 +6,7 @@
     <div class="container py-5">
         <div class="row mb-3">
             <div class="col d-flex align-items-center mt-4">
-                <h1 style="font-family: 'Kanit', sans-serif;" class="text-white flex-grow-1 m-0">
+                <h1 class="flex-grow-1 m-0">
                     {{ __('Crea un nuovo progetto') }}
                 </h1>
             </div>
@@ -42,13 +42,9 @@
             </div>
 
             <div class="mb-3">
-                <label for="description" class="form-label text-warning">Descrizione</label>
-                <input type="text" class="form-control" name="description" id="description" aria-describedby="helpId"
-                    placeholder="Vieni a mangiare al nostro ristorante, il divertimento è ass..."
-                    value="{{ old('description') }}">
-                <small id="descriptionHelper" class="form-text text-white">
-                    Inserisci la descrizione del progetto qui
-                </small>
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description"
+                    rows="3">{{ old('description', $restaurant->description) }}</textarea>
             </div>
 
 

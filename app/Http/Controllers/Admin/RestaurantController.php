@@ -90,10 +90,10 @@ class RestaurantController extends Controller
             $validated['slug'] = $restaurant->generateSlug($request->name);
         }
 
-        $restaurant->types()->sync($request->type);
+        $restaurant->types()->sync($request->types);
         $restaurant->update($validated);
 
-        return to_route('admin.restaurant.show', $restaurant)->with('message', 'Restaurant infos updated succefully!');
+        return to_route('admin.restaurants.show', $restaurant)->with('message', 'Restaurant infos updated succefully!');
     }
 
     /**
