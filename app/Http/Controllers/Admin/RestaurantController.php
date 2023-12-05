@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Restaurant;
 use App\Http\Requests\StoreRestaurantRequest;
 use App\Http\Requests\UpdateRestaurantRequest;
+use App\Models\Type;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class RestaurantController extends Controller
 {
@@ -39,7 +42,7 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        //
+        return view('admin.restaurants.show', ['restaurant' => $restaurant]);
     }
 
     /**
@@ -47,7 +50,8 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        //
+        $types = Type::all();
+        return view('admin.restaurants.edit', compact('restaurant', 'types'));
     }
 
     /**
@@ -55,7 +59,26 @@ class RestaurantController extends Controller
      */
     public function update(UpdateRestaurantRequest $request, Restaurant $restaurant)
     {
-        //
+        $validated = $request->validated();
+
+        if ($request->has('image')) {
+            $newImage = $request->image;
+            $file_path = Storage::put('placeholders', $newImage);
+            if (!is_null($restaurant->image) && Storage::fileExists($restaurant->image)) {
+                Storage::delete($restaurant->image);
+            }
+
+            $validated['image'] = $file_path;
+        }
+
+        if (!Str::is($restaurant->getOriginal('name'), $request->name)) {
+            $validated['slug'] = $restaurant->generateSlug($request->name);
+        }
+
+        $restaurant->types()->sync($request->type);
+        $restaurant->update($validated);
+
+        return to_route('admin.restaurant.show', $restaurant)->with('message', 'Restaurant infos updated succefully!');
     }
 
     /**
