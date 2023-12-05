@@ -80,26 +80,24 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="modalTitleId-{{ $restaurant->id }}">
-                                                Deleting your
-                                                restaurant "{{ $restaurant->title }}"
+                                                Stai cancellando il tuo ristorante "{{ $restaurant->name }}"
                                             </h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            Are you sure that you want to move this restaurant to the trash can?
+                                            Sei sicuro di voler spostare il tuo ristorante nel cestino?
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Dismiss</button>
+                                                data-bs-dismiss="modal">Annulla</button>
 
                                             <form action="{{ route('admin.restaurants.destroy', $restaurant->slug) }}"
                                                 method="POST">
                                                 @csrf
                                                 @method('DELETE')
 
-                                                <button type="submit" class="btn btn-danger">Move to trash
-                                                    can</button>
+                                                <button type="submit" class="btn btn-danger">Sposta nel cestino</button>
 
                                             </form>
                                         </div>
