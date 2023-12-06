@@ -6,22 +6,22 @@
             {{ session('message') }}
         </div>
     @endif
-    <h1 class="text-muted pt-4">&#128898; Trashed restaurants 🗑</h1>
+    <h1 class="text-muted pt-4">&#128898; Ristoranti Eliminati 🗑</h1>
     <div class="card my-5">
 
         <div class="card-body p-0">
 
-            <div class="table-responsive-sm">
-                <table class="table table-striped table-hover table-borderless table-dark align-middle text-center">
-                    <thead class="table-light">
+            <div class="table-responsive-sm ">
+                <table class="table table-hover table-striped table-borderless custom_table align-middle text-center">
+                    <thead class="">
                         <caption>Trashed restaurants table</caption>
                         <tr>
                             <th>ID</th>
-                            <th>TYPE</th>
-                            <th>NAME</th>
-                            <th>DESCRIPTION</th>
-                            <th>IMAGE</th>
-                            <th>ACTIONS</th>
+                            <th>TIPOLOGIA</th>
+                            <th>NOME</th>
+                            <th>DESCRIZIONE</th>
+                            <th>IMMAGINE</th>
+                            <th>AZIONE</th>
 
                         </tr>
                     </thead>
@@ -129,7 +129,7 @@
 
                             <td></td>
                             <td></td>
-                            <td>No trashed restaurants ♻</td>
+                            <td>non ci sono ristoranti eliminati ♻</td>
                             <td></td>
                             <td></td>
                             <td></td>

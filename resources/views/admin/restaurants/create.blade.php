@@ -15,11 +15,12 @@
         <form action="{{ route('admin.restaurants.store') }}" method="POST" enctype="multipart/form-data">
 
             @csrf
-            <div class="mb-3">
+            <div class="mb-3 form-floating ">
+
+                <input type="text" class="form-control " name="name" id="name" aria-describedby="helpId"
+                    placeholder="Ristorante Miramare" value="{{ old('name') }}">
                 <label for="name" class="form-label text-warning">Nome</label>
-                <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId"
-                    placeholder="Acolyte Eco Battle staff" value="{{ old('name') }}">
-                <small id="nameHelper" class="form-text text-white">
+                <small id="nameHelper" class="form-text text-white ">
                     Digitare il nome qui
 
                     @error('name')
@@ -28,10 +29,11 @@
                 </small>
             </div>
 
-            <div class="mb-3">
-                <label for="address" class="form-label text-warning">Indirizzo</label>
+            <div class="mb-3 form-floating">
+
                 <input type="text" class="form-control" name="address" id="address" aria-describedby="addressHelper"
                     placeholder="Via don Mattei 43, Brescia" value="{{ old('address') }}">
+                <label for="address" class="form-label text-warning">Indirizzo</label>
                 <small id="addressHelper" class="form-text text-white">
                     Digitare l'indirizzo qui
 
@@ -41,14 +43,17 @@
                 </small>
             </div>
 
-            <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
+            <div class="mb-3 ">
+                <label for="description" class="form-label text-warning">Descrizione</label>
                 <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description"
-                    rows="3">{{ old('description') }}</textarea>
+                    rows="3">{{ old('description') }}
+                 
+                </textarea>
+
             </div>
 
 
-            <div class="mb-3">
+            <div class="mb-3 form-floating">
 
                 <div class="list-group">
                     <span class="mb-2">Tipo di cucina</span>
@@ -79,7 +84,7 @@
                 <div class="text-danger">{{ $message }}</div>
             @enderror
 
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn bg_color text-white">
                 CREA
             </button>
         </form>
