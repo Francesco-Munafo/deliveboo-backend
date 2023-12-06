@@ -38,6 +38,7 @@ class StoreDishRequest extends FormRequest
             'image.image' => "L'immagine deve essere un file di tipo PNG,SVG,JPG,JPEG",
             'course.required' => 'La portata è obbligatoria!',
             'avialable.required' => 'La disponibilità è obbligatoria!',
+            'price.required' => 'Il prezzo è obbligatorio!',
         ];
     }
 }

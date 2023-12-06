@@ -19,8 +19,8 @@ class RestaurantTypeSeeder extends Seeder
 
         // Loop sui ristoranti e collega ciascuno a uno o più tipi casuali
         $restaurants->each(function ($restaurant) use ($types) {
-            // Genera un numero casuale di tipi da collegare a ciascun ristorante (da 1 a 3 nel caso sotto)
-            $numberOfTypes = rand(1, 1);
+            // Genera un numero casuale di tipi da collegare a ciascun ristorante (3 nel caso sotto)
+            $numberOfTypes = rand(1, 3);
 
             // Prendi un numero casuale di tipi senza ripetizioni
             $selectedTypes = $types->random($numberOfTypes);

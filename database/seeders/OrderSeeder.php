@@ -20,9 +20,6 @@ class OrderSeeder extends Seeder
     {
         $fakerIt = FakerIt::create('it_IT');
 
-        $restaurant = Restaurant::find(1);
-
-
         //We will create a year span to place orders in a random date of the year
         $currentYear = Carbon::now()->year;
 
@@ -31,11 +28,13 @@ class OrderSeeder extends Seeder
 
         $seconds = $endYear->diffInSeconds($startYear);
 
+        $restaurants = Restaurant::all()->count();
+
         for ($i = 0; $i < 10; $i++) {
             $timestamp = $startYear->timestamp + rand(0, $seconds);
 
             $new_order = new Order();
-            $new_order->restaurant_id = $restaurant->id;
+            $new_order->restaurant_id = rand(1, $restaurants);
             $new_order->total = $faker->randomFloat(2, 1.0, 100);
             $new_order->user_mail = $faker->email();
             $new_order->username = $fakerIt->name();
