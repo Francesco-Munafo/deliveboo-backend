@@ -18,7 +18,7 @@ class Restaurant extends Model
 
     protected $datas = ['deleted_at'];
 
-    protected $fillable = ['name', 'slug', 'address', 'description', 'vat_number', 'image', 'type_id', 'order_id'];
+    protected $fillable = ['name', 'slug', 'address', 'description', 'vat_number', 'image', 'user_id'];
 
     public static function generateSlug($name)
     {
@@ -39,5 +39,10 @@ class Restaurant extends Model
     public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }

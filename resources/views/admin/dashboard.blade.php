@@ -5,23 +5,6 @@
         <h2 class=" fw-bolder my-4">
             Ristoranti
         </h2>
-        {{-- <div class="row justify-content-center mb-5">
-            <div class="col">
-                <div class="card">
-                    <div class="card-header">{{ __('User Dashboard') }}</div>
-
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
-                        {{ __('You are logged in!') }}
-                    </div>
-                </div>
-            </div>
-        </div> --}}
 
         <div class="my-4">
             <button class="btn bg_color ">
@@ -102,7 +85,8 @@
                                                 @csrf
                                                 @method('DELETE')
 
-                                                <button type="submit" class="btn btn-danger">Sposta nel cestino</button>
+                                                <button type="submit" class="btn btn-danger">Sposta nel
+                                                    cestino</button>
 
                                             </form>
                                         </div>
