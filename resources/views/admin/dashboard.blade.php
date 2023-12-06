@@ -23,6 +23,13 @@
             </div>
         </div>
 
+        <div class="my-4">
+            <button class="btn btn-success">
+                <a href="{{ route('admin.restaurants.create') }}" class="text-decoration-none text-dark">CREA UN NUOVO
+                    RISTORANTE</a>
+            </button>
+        </div>
+
         <div class="d-flex gap-4 flex-wrap">
             @foreach ($restaurants as $restaurant)
                 <div class="card" style="width:18rem;">
