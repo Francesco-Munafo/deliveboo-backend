@@ -7,7 +7,7 @@
         <div class="row mb-3">
             <div class="col d-flex align-items-center mt-4">
                 <h1 class="flex-grow-1 m-0">
-                    {{ __('Aggiorna il progetto') }}
+                    {{ __('Aggiorna il ristorante') }}
                 </h1>
             </div>
         </div>

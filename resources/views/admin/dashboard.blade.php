@@ -30,13 +30,13 @@
             </button>
         </div>
 
-        <div class="d-flex gap-4 flex-wrap">
+        <div class="my-5 d-flex gap-4 flex-wrap">
             @foreach ($restaurants as $restaurant)
-                <div class="card" style="width:18rem;">
+                <div class="card rounded-3" style="width:18rem;">
                     @if (str_contains($restaurant->image, 'http'))
-                        <img src="{{ $restaurant->image }}">
+                        <img src="{{ $restaurant->image }}" class="rounded-3">
                     @else
-                        <img src="{{ asset('storage/' . $restaurant->image) }}" alt="..">
+                        <img class="rounded-3" src="{{ asset('storage/' . $restaurant->image) }}" alt="..">
                     @endif
                     <div class="card-body">
                         <h5 class="card-title">{{ $restaurant->name }}</h5>

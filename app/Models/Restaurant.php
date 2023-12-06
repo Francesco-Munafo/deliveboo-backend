@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 
 class Restaurant extends Model
 {
@@ -28,8 +30,16 @@ class Restaurant extends Model
         return $this->belongsToMany(Type::class);
     }
 
+
+    public function dishes(): HasMany
+    {
+        return $this->hasMany(Dish::class);
+    }
+}
+
     public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class);
     }
 }
+
