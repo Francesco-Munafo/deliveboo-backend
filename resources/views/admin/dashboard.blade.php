@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="container">
-        <h2 class="fs-4 text-secondary my-4">
-            {{ __('Dashboard') }}
+        <h2 class=" fw-bolder my-4">
+            Ristoranti
         </h2>
-        <div class="row justify-content-center mb-5">
+        {{-- <div class="row justify-content-center mb-5">
             <div class="col">
                 <div class="card">
                     <div class="card-header">{{ __('User Dashboard') }}</div>
@@ -21,11 +21,11 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <div class="my-4">
-            <button class="btn btn-success">
-                <a href="{{ route('admin.restaurants.create') }}" class="text-decoration-none text-dark">CREA UN NUOVO
+            <button class="btn bg_color ">
+                <a href="{{ route('admin.restaurants.create') }}" class="text-decoration-none text-white">CREA UN NUOVO
                     RISTORANTE</a>
             </button>
         </div>
@@ -44,7 +44,7 @@
                         <p class="card-text">{{ $restaurant->description }}</p>
                         <ul class="d-flex flex-wrap gap-1 list-unstyled">
                             @foreach ($restaurant->types as $type)
-                                <li class="badge bg-secondary">
+                                <li class="badge bg_color">
                                     {{ $type->name }}
                                 </li>
                             @endforeach
