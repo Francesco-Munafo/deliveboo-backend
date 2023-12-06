@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Guest\PageController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\RestaurantController;
+use App\Http\Controllers\Admin\DishController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,10 @@ Route::middleware('auth')
         Route::get('trash', [RestaurantController::class, 'trashed'])->name('trash');
         Route::put('trash/{restaurant}/restore', [RestaurantController::class, 'restoreTrashed'])->name('restore');
         Route::delete('trash/{restaurant}/destroy', [RestaurantController::class, 'forceDelete'])->name('forceDelete');
+
+        Route::resource('/restaurants/dishes', DishController::class)->parameters(['restaurants.dishes' => 'dish:slug']);
+        Route::get('/restaurants/{restaurant}/dishes/create', [DishController::class, 'create'])->name('restaurants.dishes.create');
+        Route::post('/restaurants/{restaurant}/dishes', [DishController::class, 'store'])->name('restaurants.dishes.store');
     });
 
 

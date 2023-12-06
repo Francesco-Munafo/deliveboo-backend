@@ -7,6 +7,7 @@ use App\Models\Restaurant;
 use App\Http\Requests\StoreRestaurantRequest;
 use App\Http\Requests\UpdateRestaurantRequest;
 use App\Models\Type;
+use App\Models\Dish;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -57,7 +58,8 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        return view('admin.restaurants.show', ['restaurant' => $restaurant]);
+        $dishes = Dish::all();
+        return view('admin.restaurants.show', ['restaurant' => $restaurant], compact('dishes'));
     }
 
     /**
