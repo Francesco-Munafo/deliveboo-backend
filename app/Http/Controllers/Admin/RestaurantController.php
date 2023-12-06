@@ -44,7 +44,7 @@ class RestaurantController extends Controller
             $validated['image'] = $file_path;
         }
 
-        $validated['slug'] =  Restaurant::generateSlug($validated['name'], '-');
+        $validated['slug'] =  Restaurant::generateSlug($validated['name']);
 
         $restaurant = Restaurant::create($validated);
         $restaurant->types()->attach($request->types);

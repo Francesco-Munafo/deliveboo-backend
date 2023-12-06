@@ -29,10 +29,15 @@
                         @forelse ($trashed as $trashed_restaurant)
                             <tr class="table-secondary">
                                 <td scope="row">{{ $trashed_restaurant->id }}</td>
-                                <td><span
-                                        class="badge rounded-pill text-bg-primary w-100">{{ $trashed_restaurant->type?->name }}</span>
+                                <td><span class="badge rounded-pill w-100 col-1 d-flex flex-wrap gap-2">
+                                        @foreach ($trashed_restaurant->types as $type)
+                                            <li class="badge bg-secondary">
+                                                {{ $type->name }}
+                                            </li>
+                                        @endforeach
+                                    </span>
                                 </td>
-                                <td>{{ $trashed_restaurant->title }}</td>
+                                <td>{{ $trashed_restaurant->name }}</td>
                                 <td class="w-50">{{ $trashed_restaurant->description }}</td>
                                 <td>
                                     @if (str_contains($trashed_restaurant->image, 'http'))

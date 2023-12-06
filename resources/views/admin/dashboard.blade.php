@@ -36,13 +36,11 @@
                         <h6 class="card-subtitle mb-2 text-muted ">{{ $restaurant->address }}</h6>
                         <p class="card-text">{{ $restaurant->description }}</p>
                         <ul class="d-flex flex-wrap gap-1 list-unstyled">
-                            @forelse ($restaurant->types as $type)
+                            @foreach ($restaurant->types as $type)
                                 <li class="badge bg-secondary">
                                     {{ $type->name }}
                                 </li>
-                            @empty
-                                <li class="badge bg-secondary">NESSUNA</li>
-                            @endforelse
+                            @endforeach
                         </ul>
                     </div>
                     <div class=" card-footer">
