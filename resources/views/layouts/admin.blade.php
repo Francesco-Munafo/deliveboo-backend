@@ -31,18 +31,26 @@
 <body>
     <div id="app">
 
-        <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-2 shadow">
-            <div id="btn btn-primary">
-                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3">
-                    front-end
-                </a>
-            </div>
+        <header class="navbar bg-white navbar-dark sticky-top  flex-md-nowrap p-2 shadow">
+            <div class="d-flex align-items-center">
+                <div id="btn btn-primary">
+                    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3">
 
-            <input class="form-control form-control-dark w-100 ms-5" type="text"
-                placeholder="Cerca il tuo progetto..." aria-label="Search">
+                        <img src="{{ asset('img/chef-restaurant-logo.png') }}" alt="" style="width:100px ">
+                    </a>
+
+                </div>
+                <button class="navbar-toggler bg_color d-md-none collapsed h-50" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            {{-- <input class="form-control form-control-dark w-100 ms-5" type="text"
+                placeholder="Cerca il tuo progetto..." aria-label="Search"> --}}
 
             <div class="navbar-nav">
-                <div class="nav-item text-nowrap ms-2">
+                {{--       <div class="nav-item text-nowrap ms-2">
                     <a class="nav-link" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
@@ -55,17 +63,42 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
+                </div> --}}
+                <div class="dropdown-center list-unstyled bg_color p-2 px-3 rounded">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle text-white text-uppercase  mx-sm-3"
+                        href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end  bg_color position-absolute"
+                        aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-white"
+                            href="{{ route('admin.dashboard') }}">{{ __('Home') }}</a>
+                        <a class="dropdown-item text-white" href="{{ url('profile') }}">{{ __('Profile') }}</a>
+                        <a class="dropdown-item text-white" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
                 </div>
-                <!-- <ul>
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                {{--    <ul>
+                    <li class="nav-item dropdown list-unstyled bg_color p-2 px-3 rounded">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-white text-uppercase "
+                            href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
                         </a>
 
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu dropdown-menu-right bg_color" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ url('dashboard') }}">{{ __('Dashboard') }}</a>
                             <a class="dropdown-item" href="{{ url('profile') }}">{{ __('Profile') }}</a>
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
@@ -75,7 +108,7 @@
                             </form>
                         </div>
                     </li>
-                </ul> -->
+                </ul> --}}
 
             </div>
         </header>
@@ -85,41 +118,41 @@
                 <!-- Definire solo parte del menu di navigazione inizialmente per poi
         aggiungere i link necessari giorno per giorno
         -->
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
-                    <div class="position-sticky pt-3">
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block  navbar-dark sidebar collapse">
+                    <div class="position-sticky pt-4">
                         <ul class="nav flex-column">
                             <li class="nav-item">
 
                                 <a style="padding-left: 12px"
-                                    class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-secondary' : '' }}"
+                                    class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg_select' : '' }}"
                                     href="{{ route('admin.dashboard') }}">
-                                    <div class="d-flex gap-1 align-items-center">
+                                    <div class="d-flex gap-1 align-items-center text-uppercase">
                                         <i class="fs-4 fa-solid fa-tachometer-alt fa-lg fa-fw"></i>
-                                        Dashboard
+                                        I tuoi ristoranti
                                     </div>
                                 </a>
 
                             </li>
 
-                            <li class="nav-item">
+                            {{--  <li class="nav-item">
 
                                 <a style="padding-left: 12px"
-                                    class="nav-link text-white {{ Route::currentRouteName() == 'profile.edit' ? 'bg-secondary' : '' }}"
+                                    class="nav-link text-white {{ Route::currentRouteName() == 'profile.edit' ? 'bg_select' : '' }}"
                                     href="{{ route('profile.edit') }}">
                                     <div class="d-flex gap-1 align-items-center">
                                         <i class="fs-4 fa-solid fa-user fa-lg fa-fw"></i>
-                                        Profile
+                                        Profilo
                                     </div>
                                 </a>
 
-                            </li>
+                            </li> --}}
 
-                            <li class="nav-item">
+                            <li class="nav-item pt-2">
 
                                 <a style="padding-left: 12px"
-                                    class="nav-link text-white {{ Route::currentRouteName() == 'admin.trash' ? 'bg-secondary' : '' }}"
+                                    class="nav-link  text-white {{ Route::currentRouteName() == 'admin.trash' ? 'bg_select' : '' }}"
                                     href="{{ route('admin.trash') }}">
-                                    <div class="d-flex gap-1 align-items-center">
+                                    <div class="d-flex gap-1 align-items-center text-uppercase">
                                         <i class="fs-4 fa-solid fa-trash fa-lg fa-fw"></i>
                                         Cestino
                                     </div>

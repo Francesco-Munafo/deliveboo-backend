@@ -1,1 +1,15 @@
-@import '~bootstrap/scss/bootstrap'
+@import "~bootstrap/scss/bootstrap";
+#sidebarMenu,
+.bg_color {
+  background-color: #f7b801;
+}
+.bg_select {
+  background-color: #3d348b;
+}
+.form-check-input:checked {
+  border-color: #3d348b;
+  background-color: #f7b801;
+}
+.custom_table {
+  --bs-table-bg: #f7b801 !important;
+}
