@@ -12,7 +12,7 @@ class Order extends Model
 
     protected $fillable = ['total', 'user_mail', 'username', 'address', 'phone', 'notes', 'payment_status', 'restaurant_id'];
 
-    public function restaurants(): HasMany
+    public function restaurant(): HasMany
     {
         return $this->hasMany(Restaurant::class);
     }
