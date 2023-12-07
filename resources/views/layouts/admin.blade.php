@@ -124,7 +124,7 @@
                             <li class="nav-item">
 
                                 <a style="padding-left: 12px"
-                                    class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg_select' : '' }}"
+                                    class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg_select' : '' }} {{ Route::currentRouteName() == 'admin.restaurants.index' ? 'bg_select' : '' }}"
                                     href="{{ route('admin.dashboard') }}">
                                     <div class="d-flex gap-1 align-items-center text-uppercase">
                                         <i class="fs-4 fa-solid fa-tachometer-alt fa-lg fa-fw"></i>
@@ -146,19 +146,6 @@
                                 </a>
 
                             </li> --}}
-
-                            <li class="nav-item pt-2">
-
-                                <a style="padding-left: 12px"
-                                    class="nav-link  text-white {{ Route::currentRouteName() == 'admin.trash' ? 'bg_select' : '' }}"
-                                    href="{{ route('admin.trash') }}">
-                                    <div class="d-flex gap-1 align-items-center text-uppercase">
-                                        <i class="fs-4 fa-solid fa-trash fa-lg fa-fw"></i>
-                                        Cestino
-                                    </div>
-                                </a>
-
-                            </li>
 
                         </ul>
                     </div>

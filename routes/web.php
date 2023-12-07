@@ -28,15 +28,20 @@ Route::middleware('auth')
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
         Route::resource('/restaurants', RestaurantController::class)->parameters(['restaurants' => 'restaurant:slug']);
-        Route::get('trash', [RestaurantController::class, 'trashed'])->name('trash');
-        Route::put('trash/{restaurant}/restore', [RestaurantController::class, 'restoreTrashed'])->name('restore');
-        Route::delete('trash/{restaurant}/destroy', [RestaurantController::class, 'forceDelete'])->name('forceDelete');
 
-        Route::resource('/restaurants/dishes', DishController::class)->parameters(['restaurants.dishes' => 'dish:slug']);
-        Route::get('/restaurants/{restaurant}/dishes/create', [DishController::class, 'create'])->name('restaurants.dishes.create');
-        Route::post('/restaurants/{restaurant}/dishes', [DishController::class, 'store'])->name('restaurants.dishes.store');
+        Route::resource('/restaurants/{restaurant}/dishes', DishController::class)->parameters(['restaurant' => 'restaurant:slug', 'dish' => 'dish:slug'])->names([
+            'index' => 'restaurant.dishes.index',
+            'create' => 'restaurant.dishes.create',
+            'store' => 'restaurant.dishes.store',
+            'show' => 'restaurant.dishes.show',
+            'edit' => 'restaurant.dishes.edit',
+            'update' => 'restaurant.dishes.update',
+            'destroy' => 'restaurant.dishes.destroy',
+
+        ]);
+        //Route::get('/restaurants/{restaurant}/dishes/create', [DishController::class, 'create'])->name('restaurants.dishes.create');
+        //Route::post('/restaurants/{restaurant}/dishes', [DishController::class, 'store'])->name('restaurants.dishes.store');
     });
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

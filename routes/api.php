@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\RestaurantController;
+use App\Http\Controllers\Api\TypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::get('restaurants', [RestaurantController::class, 'index'])->name('api.restaurants');
+Route::get('restaurants/{restaurant:slug}', [RestaurantController::class, 'show']);
+
+//filter
+Route::get('types', [TypeController::class, 'index'])->name('api.types');
+Route::get('types/{type:slug}', [TypeController::class, 'show']);

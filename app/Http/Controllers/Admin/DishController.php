@@ -34,7 +34,7 @@ class DishController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreDishRequest $request, $restaurant_id)
+    public function store(StoreDishRequest $request, Restaurant $restaurant)
     {
         $validated = $request->validated();
 
@@ -53,33 +53,33 @@ class DishController extends Controller
             'available' => $validated['available'],
             'course' => $validated['course'],
             'ingredients' => $validated['ingredients'],
-            'restaurant_id' => $restaurant_id,
+            'restaurant_id' => $restaurant->id,
             'slug' => Str::slug($validated['name']),
         ]);
 
-        return to_route("admin.restaurants.index")->with('message', 'Ristorante creato con successo!');
+        return to_route("admin.restaurants.show", $restaurant->slug)->with('message', 'Piatto creato con successo!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Dish $dish)
+    public function show(Restaurant $restaurant, Dish $dish)
     {
-        return view('admin.restaurants.dishes.show', ['dish' => $dish]);
+        return view('admin.restaurants.dishes.show', ['restaurant' => $restaurant, 'dish' => $dish]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Dish $dish)
+    public function edit(Restaurant $restaurant, Dish $dish)
     {
-        return view('admin.restaurants.dishes.edit', ['dish' => $dish]);
+        return view('admin.restaurants.dishes.edit', ['restaurant' => $restaurant, 'dish' => $dish]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDishRequest $request, Dish $dish)
+    public function update(Restaurant $restaurant, UpdateDishRequest $request, Dish $dish)
     {
         $validated = $request->validated();
 
@@ -100,14 +100,14 @@ class DishController extends Controller
         $dish->update($validated);
 
 
-        return to_route('admin.dishes.show', $dish)->with('message', 'Informazioni aggiornate con successo!');
+        return to_route('admin.restaurant.dishes.show', ['restaurant' => $restaurant, 'dish' => $dish])->with('message', 'Informazioni aggiornate con successo!');
     }
 
-    public function destroy(Dish $dish)
+    public function destroy(Restaurant $restaurant, Dish $dish)
     {
 
         $dish->delete();
 
-        return to_route('admin.restaurants.index');
+        return to_route('admin.restaurants.show', ['restaurant' => $restaurant])->with('message', 'Piatto eliminato con successo!');
     }
 }

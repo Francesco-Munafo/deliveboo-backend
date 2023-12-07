@@ -84,10 +84,12 @@
                                     class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                                 <div class="col-md-6">
+
                                     <input id="password-confirm" type="password"
                                         class="form-control @error('password-confirm') is-invalid @enderror"
                                         name="password-confirm" required autocomplete="new-password"
                                         value="{{ old('password-confirm') }}">
+
                                     @error('password-confirm')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
