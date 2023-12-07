@@ -11,6 +11,7 @@ use App\Models\Dish;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 
 class RestaurantController extends Controller
@@ -20,14 +21,10 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $user = auth()->user();
 
-        if ($user) {
-            $restaurants = $user->restaurants;
-            return view("admin.dashboard", compact("restaurants"));
-        }
+        $restaurants = Restaurant::where('user_id', Auth::id())->get();
 
-        return view("admin.dashboard")->with('message', 'Nessun ristorante trovato per questo utente.');
+        return view("admin.dashboard", compact("restaurants"));
     }
 
 
@@ -54,7 +51,15 @@ class RestaurantController extends Controller
 
         $validated['slug'] =  Restaurant::generateSlug($validated['name']);
 
-        $restaurant = Restaurant::create($validated);
+        $restaurant = Restaurant::create([
+            'name' => $validated['name'],
+            'address' => $validated['address'],
+            'description' => $validated['description'],
+            'image' => $validated['image'],
+            'user_id' => Auth::id(),
+            'slug' => Restaurant::generateSlug($validated['name'])
+        ]);
+
         $restaurant->types()->attach($request->types);
 
         return to_route("admin.restaurants.index")->with('message', 'Ristorante creato con successo!');
