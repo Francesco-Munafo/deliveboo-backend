@@ -30,12 +30,18 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        $message = [
+            'email' => 'email è gia essistente',
+            'vat_number' => 'Il campo deve 11 caratteri',
+            'confirmed' => 'La conferma della password non corrisponde.',
+
+        ];
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'vat_number' => ['required','string','min:11', 'max:11'],
-        ]);
+            'vat_number' => ['required', 'string', 'min:11', 'max:11'],
+        ], $message);
 
         $user = User::create([
             'name' => $request->name,
