@@ -147,19 +147,6 @@
 
                             </li> --}}
 
-                            <li class="nav-item pt-2">
-
-                                <a style="padding-left: 12px"
-                                    class="nav-link  text-white {{ Route::currentRouteName() == 'admin.trash' ? 'bg_select' : '' }}"
-                                    href="{{ route('admin.trash') }}">
-                                    <div class="d-flex gap-1 align-items-center text-uppercase">
-                                        <i class="fs-4 fa-solid fa-trash fa-lg fa-fw"></i>
-                                        Cestino
-                                    </div>
-                                </a>
-
-                            </li>
-
                         </ul>
                     </div>
                 </nav>
@@ -174,3 +161,4 @@
 </body>
 
 </html>
+s

@@ -18,7 +18,7 @@ class StoreDishRequest extends FormRequest
     {
         return [
             'name' => 'required|min:2|max:50',
-            'price' => 'required',
+            'price' => 'required|min:0.10',
             'description' => 'nullable',
             'image' => 'required|image',
             'available' => 'required',
@@ -39,6 +39,7 @@ class StoreDishRequest extends FormRequest
             'course.required' => 'La portata è obbligatoria!',
             'avialable.required' => 'La disponibilità è obbligatoria!',
             'price.required' => 'Il prezzo è obbligatorio!',
+            'price.' => 'Il prezzo deve essere minimo 0,10€',
         ];
     }
 }

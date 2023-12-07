@@ -7,7 +7,7 @@ return [
         "description" => "cucinata al dente.",
         "price" => 12.50,
         "available" => true,
-        "course" => "primo piatto",
+
         "ingredients" => [
             "pasta",
             "tonno",
@@ -20,7 +20,7 @@ return [
         "description" => "ben cotta.",
         "price" => 25.00,
         "available" => false,
-        "course" => "secondo piatto",
+
         "ingredients" => [
             "carne di cinghiale",
             "olio",
@@ -33,7 +33,7 @@ return [
         "description" => "Deliziosi ravioli fatti in casa con un ragù gustoso di carne, arricchito con erbe aromatiche.",
         "price" => 30.00,
         "available" => true,
-        "course" => "primo piatto",
+
         "ingredients" => [
             "pasta per ravioli",
             "carne",
@@ -47,7 +47,7 @@ return [
         "description" => "Uno spezzatino succulento di carne servito con una morbida polenta.",
         "price" => 28.00,
         "available" => false,
-        "course" => "secondo piatto",
+
         "ingredients" => [
             "carne",
             "pollo per lo spezzatino",
@@ -61,7 +61,7 @@ return [
         "description" => "Un classico piatto di pasta con tonno e salsa di pomodoro.",
         "price" => 11.99,
         "available" => true,
-        "course" => "primo piatto",
+
         "ingredients" => [
             "pasta",
             "tonno",
@@ -76,7 +76,7 @@ return [
         "description" => "Spaghetti con una fresca salsa di tonno, limone e prezzemolo.",
         "price" => 13.00,
         "available" => true,
-        "course" => "primo piatto",
+
         "ingredients" => [
             "spaghetti",
             "tonno",
@@ -91,7 +91,7 @@ return [
         "description" => "Risotto cremoso con tonno, zucchine e una nota di timo fresco.",
         "price" => 15.50,
         "available" => true,
-        "course" => "primo piatto",
+
         "ingredients" => [
             "riso",
             "tonno",
@@ -108,7 +108,7 @@ return [
         "description" => "Insalata fresca con quinoa, pomodori, cetrioli e condita con olio d'oliva e limone.",
         "price" => 15.00,
         "available" => true,
-        "course" => "antipasto",
+
         "ingredients" => [
             "quinoa",
             "pomodori",
@@ -122,7 +122,7 @@ return [
         "description" => "Filetto di salmone alla griglia servito con salsa di zenzero e lime.",
         "price" => 28.00,
         "available" => true,
-        "course" => "secondo piatto",
+
         "ingredients" => [
             "salmone",
             "zenzero",
@@ -135,7 +135,7 @@ return [
         "description" => "Un classico dessert italiano fatto con savoiardi, caffè, mascarpone e cacao.",
         "price" => 10.00,
         "available" => true,
-        "course" => "dolce",
+
         "ingredients" => [
             "savoiardi",
             "caffè",
@@ -148,7 +148,7 @@ return [
         "description" => "Zuppa calda e nutriente con lenticchie, verdure miste e crostini di pane.",
         "price" => 18.00,
         "available" => true,
-        "course" => "antipasto",
+
         "ingredients" => [
             "lenticchie",
             "verdure miste",
@@ -157,13 +157,12 @@ return [
             "pepe",
         ],
     ],
-
     [
         "name" => "Tagliata di Manzo",
         "description" => "Tagliata di manzo tenera e succulenta servita con rucola, parmigiano e riduzione di aceto balsamico.",
         "price" => 32.00,
         "available" => true,
-        "course" => "secondo piatto",
+
         "ingredients" => [
             "manzo",
             "rucola",
@@ -172,13 +171,12 @@ return [
             "sale",
         ],
     ],
-
     [
         "name" => "Penne alla Vodka",
         "description" => "Penne con una salsa cremosa al pomodoro, vodka e panna.",
         "price" => 20.00,
         "available" => true,
-        "course" => "primo piatto",
+
         "ingredients" => [
             "penne",
             "pomodoro",
@@ -187,13 +185,12 @@ return [
             "sale",
         ],
     ],
-
     [
         "name" => "Carpaccio di Barbabietole",
         "description" => "Sottili fette di barbabietola con formaggio di capra, noci e una vinaigrette leggera.",
         "price" => 16.00,
         "available" => true,
-        "course" => "antipasto",
+
         "ingredients" => [
             "barbabietole",
             "formaggio di capra",
@@ -202,13 +199,12 @@ return [
             "sale",
         ],
     ],
-
     [
         "name" => "Cannoli Siciliani",
         "description" => "Dolci cannoli siciliani ripieni di crema di ricotta e scorze d'arancia candite.",
         "price" => 12.00,
         "available" => true,
-        "course" => "dolce",
+
         "ingredients" => [
             "ricotta",
             "scorze d'arancia",
@@ -221,7 +217,7 @@ return [
         "description" => "Salmone fresco affettato sottilmente, marinato con olio d'oliva, limone e erbe aromatiche.",
         "price" => 22.00,
         "available" => true,
-        "course" => "antipasto",
+
         "ingredients" => [
             "salmone",
             "olio d'oliva",
@@ -230,13 +226,12 @@ return [
             "sale",
         ],
     ],
-
     [
         "name" => "Lasagna Vegetariana",
         "description" => "Strati di pasta fresca con verdure miste, salsa di pomodoro e formaggio fuso.",
         "price" => 24.00,
         "available" => true,
-        "course" => "primo piatto",
+
         "ingredients" => [
             "pasta fresca",
             "verdure miste",
@@ -245,13 +240,12 @@ return [
             "sale",
         ],
     ],
-
     [
         "name" => "Pollo alle Mandorle",
         "description" => "Bocconcini di pollo croccanti in una salsa alle mandorle, serviti con riso basmati.",
         "price" => 26.00,
         "available" => true,
-        "course" => "secondo piatto",
+
         "ingredients" => [
             "pollo",
             "mandorle",
@@ -260,13 +254,12 @@ return [
             "pepe",
         ],
     ],
-
     [
         "name" => "Gnocchi al Gorgonzola",
         "description" => "Gnocchi di patate con una deliziosa salsa cremosa al formaggio gorgonzola.",
         "price" => 21.00,
         "available" => true,
-        "course" => "primo piatto",
+
         "ingredients" => [
             "gnocchi",
             "gorgonzola",
@@ -275,13 +268,12 @@ return [
             "sale",
         ],
     ],
-
     [
         "name" => "Cotoletta alla Milanese",
         "description" => "Cotoletta di vitello impanata e fritta, servita con spicchi di limone.",
         "price" => 29.00,
         "available" => true,
-        "course" => "secondo piatto",
+
         "ingredients" => [
             "vitello",
             "pan grattato",
@@ -290,13 +282,12 @@ return [
             "sale",
         ],
     ],
-
     [
         "name" => "Crostata di Frutta",
         "description" => "Crostata con base di pasta frolla e ricoperta di frutta fresca di stagione.",
         "price" => 14.00,
         "available" => true,
-        "course" => "dolce",
+
         "ingredients" => [
             "pasta frolla",
             "frutta fresca",
@@ -304,13 +295,12 @@ return [
             "gelatina",
         ],
     ],
-
     [
         "name" => "Bruschetta Classica",
         "description" => "Fette di pane tostato con pomodori freschi, basilico, aglio e olio d'oliva.",
         "price" => 12.00,
         "available" => true,
-        "course" => "antipasto",
+
         "ingredients" => [
             "pane",
             "pomodori",
@@ -319,13 +309,12 @@ return [
             "olio d'oliva",
         ],
     ],
-
     [
         "name" => "Spaghetti alle Vongole",
         "description" => "Spaghetti con vongole fresche, aglio, peperoncino e prezzemolo.",
         "price" => 27.00,
         "available" => true,
-        "course" => "primo piatto",
+
         "ingredients" => [
             "spaghetti",
             "vongole",
@@ -334,13 +323,12 @@ return [
             "prezzemolo",
         ],
     ],
-
     [
         "name" => "Risotto ai Funghi Porcini",
         "description" => "Risotto cremoso con funghi porcini freschi e parmigiano.",
         "price" => 25.00,
         "available" => true,
-        "course" => "primo piatto",
+
         "ingredients" => [
             "riso",
             "funghi porcini",
@@ -349,19 +337,166 @@ return [
             "burro",
         ],
     ],
-
     [
         "name" => "Torta al Cioccolato Fondente",
         "description" => "Torta soffice e ricca al cioccolato fondente, servita con una salsa al cioccolato.",
         "price" => 16.00,
         "available" => true,
-        "course" => "dolce",
+
         "ingredients" => [
             "cioccolato fondente",
             "farina",
             "uova",
             "burro",
             "zucchero",
+        ],
+    ],
+    [
+        "name" => "Ravioli di Zucca",
+        "description" => "Ravioli fatti in casa con ripieno di zucca, burro e salvia.",
+        "price" => 23.00,
+        "available" => true,
+
+        "ingredients" => [
+            "pasta per ravioli",
+            "zucca",
+            "burro",
+            "salvia",
+            "sale",
+        ],
+    ],
+
+    [
+        "name" => "Brasato di Manzo",
+        "description" => "Manzo brasato lentamente con vino rosso, servito con purè di patate.",
+        "price" => 31.00,
+        "available" => true,
+
+        "ingredients" => [
+            "manzo",
+            "vino rosso",
+            "patate",
+            "carote",
+            "sedano",
+        ],
+    ],
+
+    [
+        "name" => "Carpaccio di Filetto",
+        "description" => "Filetto di manzo crudo affettato sottilmente, condito con olio d'oliva, limone e scaglie di parmigiano.",
+        "price" => 30.00,
+        "available" => true,
+
+        "ingredients" => [
+            "filetto di manzo",
+            "olio d'oliva",
+            "limone",
+            "parmigiano",
+            "sale",
+        ],
+    ],
+
+    [
+        "name" => "Insalata Caprese",
+        "description" => "Mozzarella di bufala, pomodori freschi e basilico, conditi con olio d'oliva.",
+        "price" => 17.00,
+        "available" => true,
+
+        "ingredients" => [
+            "mozzarella di bufala",
+            "pomodori",
+            "basilico",
+            "olio d'oliva",
+            "sale",
+        ],
+    ],
+
+    [
+        "name" => "Sogliola al Limone",
+        "description" => "Filetti di sogliola cotti al limone e prezzemolo, serviti con contorno di verdure grigliate.",
+        "price" => 29.00,
+        "available" => true,
+
+        "ingredients" => [
+            "sogliola",
+            "limone",
+            "prezzemolo",
+            "verdure grigliate",
+            "sale",
+        ],
+    ],
+
+    [
+        "name" => "Gamberoni alla Griglia",
+        "description" => "Gamberoni freschi alla griglia con aglio, prezzemolo e una spruzzata di limone.",
+        "price" => 34.00,
+        "available" => true,
+
+        "ingredients" => [
+            "gamberoni",
+            "aglio",
+            "prezzemolo",
+            "limone",
+            "sale",
+        ],
+    ],
+
+    [
+        "name" => "Fettuccine Alfredo",
+        "description" => "Fettuccine con una ricca salsa di panna, burro e parmigiano.",
+        "price" => 19.00,
+        "available" => true,
+
+        "ingredients" => [
+            "fettuccine",
+            "panna",
+            "burro",
+            "parmigiano",
+            "sale",
+        ],
+    ],
+
+    [
+        "name" => "Cavolo Nero Saltato",
+        "description" => "Cavolo nero saltato in padella con aglio, peperoncino e pinoli tostati.",
+        "price" => 16.00,
+        "available" => true,
+
+        "ingredients" => [
+            "cavolo nero",
+            "aglio",
+            "peperoncino",
+            "pinoli",
+            "sale",
+        ],
+    ],
+
+    [
+        "name" => "Tartare di Tonno",
+        "description" => "Tonno crudo tagliato a cubetti, condito con olio extravergine d'oliva e cipollotto.",
+        "price" => 25.00,
+        "available" => true,
+
+        "ingredients" => [
+            "tonno fresco",
+            "olio extravergine d'oliva",
+            "cipollotto",
+            "sale",
+            "pepe",
+        ],
+    ],
+
+    [
+        "name" => "Mousse al Limone",
+        "description" => "Mousse leggera al limone con una nota di freschezza.",
+        "price" => 13.00,
+        "available" => true,
+
+        "ingredients" => [
+            "limone",
+            "panna",
+            "zucchero",
+            "gelatina",
         ],
     ],
 
