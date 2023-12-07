@@ -12,7 +12,7 @@
             </div>
         </div>
 
-        <form action="{{ route('admin.restaurants.dishes.store', $restaurant_id) }}" method="POST"
+        <form action="{{ route('admin.restaurant.dishes.store', $restaurant_id) }}" method="POST"
             enctype="multipart/form-data">
 
             @csrf

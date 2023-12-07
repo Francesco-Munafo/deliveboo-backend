@@ -65,7 +65,8 @@
 
                         <div class=" card-footer">
                             <div class="buttons d-flex justify-content-center gap-2">
-                                <a class="btn btn-warning" href="{{ route('admin.dishes.edit', $dish) }}">
+                                <a class="btn btn-warning"
+                                    href="{{ route('admin.restaurant.dishes.edit', [$restaurant, $dish]) }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                         fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                                         <path
@@ -97,7 +98,8 @@
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Annulla</button>
-                                                <form action="{{ route('admin.dishes.destroy', ['dish' => $dish->id]) }}"
+                                                <form
+                                                    action="{{ route('admin.restaurant.dishes.destroy', [$restaurant, $dish]) }}"
                                                     method="POST">
                                                     @csrf
                                                     @method('DELETE')
