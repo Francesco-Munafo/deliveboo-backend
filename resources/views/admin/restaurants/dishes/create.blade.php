@@ -17,10 +17,10 @@
 
             @csrf
 
-            <div class="mb-3">
-                <label for="name" class="form-label text-warning">Nome</label>
+            <div class="mb-3 form-floating">
                 <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId"
                     placeholder="Pasta al ragù" value="{{ old('name') }}">
+                <label for="name" class="form-label text-warning">Nome</label>
                 <small id="nameHelper" class="form-text text-white">
                     Digitare il nome qui
 
@@ -30,10 +30,10 @@
                 </small>
             </div>
 
-            <div class="mb-3">
-                <label for="price" class="form-label text-warning">Prezzo</label>
+            <div class="mb-3 form-floating">
                 <input type="text" class="form-control" name="price" id="price" aria-describedby="priceHelper"
                     placeholder="22.50$" value="{{ old('price') }}">
+                <label for="price" class="form-label text-warning">Prezzo</label>
                 <small id="priceHelper" class="form-text text-white">
                     Digitare l'indirizzo qui
 
@@ -43,11 +43,19 @@
                 </small>
             </div>
 
-            <div class="mb-3">
+            {{--      <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description"
                     rows="3">{{ old('description') }}</textarea>
+            </div> --}}
+
+
+            <div class="form-floating">
+                <textarea class="form-control @error('description') is-invalid @enderror" name="description"
+                    placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px">{{ old('description') }}</textarea>
+                <label for="floatingTextarea2" class="text-warning">Descrizione</label>
             </div>
+
 
             <div class="mb-3">
                 <label for="course" class="form-label text-warning">Portata</label>
@@ -61,16 +69,18 @@
                     <option value="7">Bibita</option>
                 </select>
 
+
                 @error('course')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
 
-            <div class="mb-3">
-                <label for="ingredients" class="form-label text-warning">Ingredienti</label>
+            <div class="mb-3 form-floating">
+
                 <input type="text" class="form-control" name="ingredients" id="ingredients"
                     aria-describedby="ingredientsHelper" placeholder="Aglo, olio, peperoncino..."
                     value="{{ old('ingredients') }}">
+                <label for="ingredients" class="form-label text-warning">Ingredienti</label>
                 <small id="ingredientsHelper" class="form-text text-white">
                     Digitare l'indirizzo qui
 
@@ -104,7 +114,7 @@
                 @enderror
             </div>
 
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-warning text-white">
                 CREA
             </button>
         </form>

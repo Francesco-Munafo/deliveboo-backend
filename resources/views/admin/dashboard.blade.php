@@ -7,7 +7,7 @@
         </h2>
 
         <div class="my-4">
-            <button class="btn bg_color ">
+            <button class="btn btn-warning ">
                 <a href="{{ route('admin.restaurants.create') }}" class="text-decoration-none text-white">CREA UN NUOVO
                     RISTORANTE</a>
             </button>

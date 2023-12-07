@@ -45,10 +45,16 @@
             </div>
 
 
-            <div class="mb-3">
+            {{--       <div class="mb-3">
                 <label for="description" class="form-label text-warning">Descrizione</label>
                 <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description"
                     rows="3">{{ old('description', $restaurant->description) }}</textarea>
+            </div>
+ --}}
+            <div class="form-floating">
+                <textarea class="form-control @error('description') is-invalid @enderror" name="description"
+                    placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px">{{ old('description', $restaurant->description) }}</textarea>
+                <label for="floatingTextarea2" class="text-warning">Descrizione</label>
             </div>
 
             <div class="mb-3">
@@ -93,7 +99,7 @@
                 <div class="text-danger">{{ $message }}</div>
             @enderror
 
-            <button type="submit" class="btn bg_color text-white">
+            <button type="submit" class="btn btn-warning text-white">
                 AGGIORNA
             </button>
         </form>
