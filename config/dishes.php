@@ -365,7 +365,6 @@ return [
             "sale",
         ],
     ],
-
     [
         "name" => "Brasato di Manzo",
         "description" => "Manzo brasato lentamente con vino rosso, servito con purè di patate.",

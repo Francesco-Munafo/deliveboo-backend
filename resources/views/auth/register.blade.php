@@ -85,7 +85,16 @@
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
+                                        @error('password-confirm')
+                                        
+                                    @enderror
                                         name="password_confirmation" required autocomplete="new-password">
+
+                                    @error('password-confirm')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
 
