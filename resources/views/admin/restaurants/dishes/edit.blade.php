@@ -12,7 +12,8 @@
             </div>
         </div>
 
-        <form action="{{ route('admin.dishes.update', $dish) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.restaurant.dishes.update', [$restaurant, $dish]) }}" method="POST"
+            enctype="multipart/form-data">
 
             @csrf
             @method('PUT')

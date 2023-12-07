@@ -77,7 +77,7 @@
                 <h2>PIATTI</h2>
 
                 <button class="btn btn-success my-3">
-                    <a href="{{ route('admin.restaurants.dishes.create', $restaurant->id) }}"
+                    <a href="{{ route('admin.restaurant.dishes.create', $restaurant->id) }}"
                         class="text-decoration-none text-dark">CREA
                         UN NUOVO PIATTO</a>
                 </button>
@@ -141,7 +141,7 @@
                             <div class=" card-footer">
                                 <div class="buttons d-flex justify-content-between">
                                     <a class="btn btn-primary"
-                                        href="{{ route('admin.dishes.show', [$restaurant->slug, $dish]) }}">
+                                        href="{{ route('admin.restaurant.dishes.show', [$restaurant, $dish]) }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
                                             <path
@@ -151,7 +151,7 @@
                                         </svg>
                                     </a>
                                     <a class="btn btn-warning"
-                                        href="{{ route('admin.dishes.edit', [$restaurant->slug, $dish->slug]) }}">
+                                        href="{{ route('admin.restaurant.dishes.edit', [$restaurant, $dish]) }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                                             <path
@@ -184,7 +184,7 @@
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Annulla</button>
                                                     <form
-                                                        action="{{ route('admin.dishes.destroy', [$restaurant->slug, $dish->id]) }}"
+                                                        action="{{ route('admin.restaurant.dishes.destroy', [$restaurant, $dish]) }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')
