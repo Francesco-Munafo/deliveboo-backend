@@ -86,10 +86,11 @@
                     @foreach ($dishes as $dish)
                         <div class="card" style="width: 15rem;">
                             @if (str_contains($dish->image, 'http'))
-                                <img src="{{ $dish->image }}">
+                                <img src="{{ asset($dish->image) }}" alt="Nome del piatto">
                             @else
                                 <img src="{{ asset('storage/' . $dish->image) }}" alt="..">
                             @endif
+
                             <div class="card-body">
                                 <h4 class="card-title">{{ $dish->name }}</h4>
                                 <span class="card-title">

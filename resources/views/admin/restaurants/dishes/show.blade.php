@@ -12,6 +12,7 @@
                         @else
                             <img src="{{ asset('storage/' . $dish->image) }}" alt="..">
                         @endif
+
                         <div class="card-body">
                             <h4 class="card-title">{{ $dish->name }}</h4>
                             <span class="card-title">
