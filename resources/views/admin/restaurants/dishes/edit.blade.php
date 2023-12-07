@@ -50,15 +50,19 @@
 
             <div class="mb-3">
                 <label for="course" class="form-label text-warning">Portata</label>
-                <input type="text" class="form-control" name="course" id="course" aria-describedby="courseHelper"
-                    placeholder="Secondo piatto" value="{{ old('course', $dish->course) }}">
-                <small id="courseHelper" class="form-text text-white">
-                    Digitare la portata
+                <select class="form-select @error('course') is-invalid  @enderror" name="course" id="course">
+                    <option value="1" selected>Primo piatto</option>
+                    <option value="2">Secondo piatto</option>
+                    <option value="3">Dolce</option>
+                    <option value="4">Antipasto</option>
+                    <option value="5">Contorno</option>
+                    <option value="6">Frutta</option>
+                    <option value="7">Bibita</option>
+                </select>
 
-                    @error('course')
-                        <div class="text-danger">{{ $message }}</div>
-                    @enderror
-                </small>
+                @error('course')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="mb-3">

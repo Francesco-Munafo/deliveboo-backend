@@ -28,7 +28,7 @@ class DishSeeder extends Seeder
             $new_dish->image = "https://www.biochetasi.it/wp-content/uploads/2019/09/I-bambini-e-il-cibo-spazzatura.-Meglio-non-esagerare-1-biochetasi-1000x600.jpg";
             $new_dish->price = $dish["price"];
             $new_dish->available = $dish["available"];
-            $new_dish->course = $dish["course"];
+            $new_dish->course = rand(1, 7);
             $new_dish->ingredients = implode(",", $dish["ingredients"]);
             $new_dish->slug = Str::slug($new_dish->name, '-');
             $new_dish->save();

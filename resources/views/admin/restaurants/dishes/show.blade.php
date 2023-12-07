@@ -14,7 +14,40 @@
                         @endif
                         <div class="card-body">
                             <h4 class="card-title">{{ $dish->name }}</h4>
-                            <span class="card-title">PORTATA:{{ $dish->course }}</span> <br>
+                            <span class="card-title">
+                                PORTATA:
+                                @switch($dish->course)
+                                    @case(1)
+                                        Primo piatto
+                                    @break
+
+                                    @case(2)
+                                        Secondo piatto
+                                    @break
+
+                                    @case(3)
+                                        Dolce
+                                    @break
+
+                                    @case(4)
+                                        Antipasto
+                                    @break
+
+                                    @case(5)
+                                        Contorno
+                                    @break
+
+                                    @case(6)
+                                        Frutta
+                                    @break
+
+                                    @case(7)
+                                        Bibita
+                                    @break
+
+                                    @default
+                                @endswitch
+                            </span> <br>
                             <span class="card-title"><strong>PREZZO: {{ $dish->price }}€</strong></span> <br>
                             <span class="card-title">
                                 @if ($dish->available)
@@ -32,7 +65,7 @@
 
                         <div class=" card-footer">
                             <div class="buttons d-flex justify-content-center gap-2">
-                                <a class="btn btn-warning" href="{{ route('admin.dishes.edit', $dish->slug) }}">
+                                <a class="btn btn-warning" href="{{ route('admin.dishes.edit', $dish) }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                         fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                                         <path

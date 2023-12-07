@@ -34,7 +34,7 @@ class DishController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreDishRequest $request, $restaurant_id)
+    public function store(StoreDishRequest $request, Restaurant $restaurant)
     {
         $validated = $request->validated();
 
@@ -53,11 +53,11 @@ class DishController extends Controller
             'available' => $validated['available'],
             'course' => $validated['course'],
             'ingredients' => $validated['ingredients'],
-            'restaurant_id' => $restaurant_id,
+            'restaurant_id' => $restaurant->id,
             'slug' => Str::slug($validated['name']),
         ]);
 
-        return to_route("admin.restaurants.index")->with('message', 'Ristorante creato con successo!');
+        return to_route("admin.restaurants.show", $restaurant->slug)->with('message', 'Piatto creato con successo!');
     }
 
     /**
@@ -71,9 +71,9 @@ class DishController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Dish $dish)
+    public function edit(Dish $dish, Restaurant $restaurant)
     {
-        return view('admin.restaurants.dishes.edit', ['dish' => $dish]);
+        return view('admin.restaurants.dishes.edit', [$dish, $restaurant->slug]);
     }
 
     /**

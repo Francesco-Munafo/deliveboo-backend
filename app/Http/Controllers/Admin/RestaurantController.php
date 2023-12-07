@@ -8,6 +8,7 @@ use App\Http\Requests\StoreRestaurantRequest;
 use App\Http\Requests\UpdateRestaurantRequest;
 use App\Models\Type;
 use App\Models\Dish;
+use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -19,9 +20,16 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurants = Restaurant::all();
-        return view("admin.dashboard", compact("restaurants"));
+        $user = auth()->user();
+
+        if ($user) {
+            $restaurants = $user->restaurants;
+            return view("admin.dashboard", compact("restaurants"));
+        }
+
+        return view("admin.dashboard")->with('message', 'Nessun ristorante trovato per questo utente.');
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -29,7 +37,6 @@ class RestaurantController extends Controller
     public function create()
     {
         $types = Type::all();
-
         return view("admin.restaurants.create", compact("types"));
     }
 
@@ -58,9 +65,10 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        $dishes = Dish::all();
-        return view('admin.restaurants.show', ['restaurant' => $restaurant], compact('dishes'));
+        $dishes = Dish::where('restaurant_id', $restaurant->id)->get();
+        return view('admin.restaurants.show', compact('restaurant', 'dishes'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -99,41 +107,15 @@ class RestaurantController extends Controller
         return to_route('admin.restaurants.show', $restaurant)->with('message', 'Informazioni aggiornate con successo!');
     }
 
-    public function trashed()
-    {
-        $trashed = Restaurant::onlyTrashed()->paginate(5);
-
-        return view('admin.restaurants.deleted', compact('trashed'));
-    }
-
-    public function restoreTrashed($slug)
-    {
-        $restaurant = Restaurant::withTrashed()->where('slug', '=', $slug)->first();
-
-        $restaurant->restore();
-
-        return to_route('admin.trash')->with('message', 'Ristorante ripristinato con successo!');
-    }
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($slug)
+    public function destroy(Restaurant $restaurant)
     {
-        $restaurant = Restaurant::withTrashed()->where('slug', '=', $slug)->first();
+        $restaurant->types()->detach();
 
         $restaurant->delete();
 
-        return to_route('admin.dashboard')->with('message', 'Ristorante aggiunto al cestino!');
-    }
-
-    public function forceDelete($slug)
-    {
-        $restaurant = Restaurant::withTrashed()->where('slug', '=', $slug)->first();
-
-        $restaurant->types()->detach();
-
-        $restaurant->forceDelete();
-
-        return to_route('admin.trash')->with('message', 'Ristorante eliminato con successo!');
+        return to_route('admin.restaurants.index');
     }
 }
