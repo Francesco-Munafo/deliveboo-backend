@@ -43,20 +43,24 @@
                 </small>
             </div>
 
-            <div class="mb-3 ">
-                <label for="description" class="form-label text-warning">Descrizione</label>
-                <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description"
-                    rows="3">{{ old('description') }}
-                 
-                </textarea>
+            {{--   <div class="mb-3 form-floating">
 
+                <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="floatingTextarea"
+                    rows="3">{{ old('description') }}</textarea>
+                <label for="description" class="form-label floatingTextarea text-warning"></label>
+
+            </div> --}}
+
+            <div class="form-floating">
+                <textarea class="form-control @error('description') is-invalid @enderror" name="description"
+                    placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px">{{ old('description') }}</textarea>
+                <label for="floatingTextarea2" class="text-warning">Descrizione</label>
             </div>
 
-
-            <div class="mb-3 form-floating">
+            <div class="mb-2 pt-2 form-floating">
 
                 <div class="list-group">
-                    <span class="mb-2">Tipo di cucina</span>
+                    <span class="mb-2 text-warning">Tipo di cucina</span>
                     @foreach ($types as $type)
                         <label class="list-group-item @error('types') is-invalid @enderror">
                             <input class="form-check-input me-1" name="types[]" id="types" type="checkbox"
@@ -84,7 +88,7 @@
                 <div class="text-danger">{{ $message }}</div>
             @enderror
 
-            <button type="submit" class="btn bg_color text-white">
+            <button type="submit" class="btn btn-warning  text-white mt-2">
                 CREA
             </button>
         </form>

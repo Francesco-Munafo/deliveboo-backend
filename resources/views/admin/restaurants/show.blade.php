@@ -83,9 +83,9 @@
 
                 <h2>PIATTI</h2>
 
-                <button class="btn btn-success my-3">
+                <button class="btn btn-warning my-3">
                     <a href="{{ route('admin.restaurants.dishes.create', $restaurant->id) }}"
-                        class="text-decoration-none text-dark">CREA
+                        class="text-decoration-none text-white ">CREA
                         UN NUOVO PIATTO</a>
                 </button>
 
