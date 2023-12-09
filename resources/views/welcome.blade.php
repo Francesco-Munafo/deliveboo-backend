@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    @guest()
+    @guest
         <div class="jumbotron p-5 mb-4 bg-light rounded-3">
             <div class="container py-5">
                 <div class="logo_laravel">
@@ -30,4 +30,11 @@
             </div>
         </div>
     @endguest
+
+    @auth
+        <div class="p-5 text-center">
+            <a href="{{ route('admin.restaurants.index') }}" class="btn btn-warning btn-lg" type="button">Vedi i tuoi
+                ristoranti</a>
+        </div>
+    @endauth
 @endsection
