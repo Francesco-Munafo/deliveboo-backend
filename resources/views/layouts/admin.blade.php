@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('page-title', 'dashboard')
+    <title>@yield('page-title', 'DeliveBoo')
     </title>
 
     <!-- Fontawesome 6 cdn -->
@@ -46,78 +46,25 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
-            {{-- <input class="form-control form-control-dark w-100 ms-5" type="text"
-                placeholder="Cerca il tuo progetto..." aria-label="Search"> --}}
 
-            <div class="navbar-nav">
-                {{--       <div class="nav-item text-nowrap ms-2">
-                    <a class="nav-link" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">
-                        <button class="btn btn-primary">
+            <button class="btn btn-warning">
+                <a class="text-white text-decoration-none" href="/profile">
+                    <i class="fa-regular fa-circle-user"></i> {{ Auth::user()->name }}
+                </a>
+            </button>
 
+            <form id="logoutForm" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+            <button class="btn btn-warning text-white"
+                onclick="event.preventDefault(); document.getElementById('logoutForm').submit();">
+                Logout
+            </button>
 
-                            <div class="text">Logout</div>
-                        </button>
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </div> --}}
-                <div class="dropdown-center list-unstyled bg_color p-2 px-3 rounded">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle text-white text-uppercase  mx-sm-3"
-                        href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }}
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end  bg_color position-absolute"
-                        aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-white"
-                            href="{{ route('admin.dashboard') }}">{{ __('Home') }}</a>
-                        <a class="dropdown-item text-white" href="{{ url('profile') }}">{{ __('Profile') }}</a>
-                        <a class="dropdown-item text-white" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </div>
-                </div>
-                {{--    <ul>
-                    <li class="nav-item dropdown list-unstyled bg_color p-2 px-3 rounded">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-white text-uppercase "
-                            href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-right bg_color" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ url('dashboard') }}">{{ __('Dashboard') }}</a>
-                            <a class="dropdown-item" href="{{ url('profile') }}">{{ __('Profile') }}</a>
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
-                </ul> --}}
-
-            </div>
         </header>
 
         <div class="container-fluid vh-100">
             <div class="row h-100">
-                <!-- Definire solo parte del menu di navigazione inizialmente per poi
-        aggiungere i link necessari giorno per giorno
-        -->
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block  navbar-dark sidebar collapse">
                     <div class="position-sticky pt-4">
                         <ul class="nav flex-column">
@@ -134,18 +81,6 @@
 
                             </li>
 
-                            {{--  <li class="nav-item">
-
-                                <a style="padding-left: 12px"
-                                    class="nav-link text-white {{ Route::currentRouteName() == 'profile.edit' ? 'bg_select' : '' }}"
-                                    href="{{ route('profile.edit') }}">
-                                    <div class="d-flex gap-1 align-items-center">
-                                        <i class="fs-4 fa-solid fa-user fa-lg fa-fw"></i>
-                                        Profilo
-                                    </div>
-                                </a>
-
-                            </li> --}}
 
                         </ul>
                     </div>
@@ -156,7 +91,6 @@
                 </main>
             </div>
         </div>
-
     </div>
 </body>
 

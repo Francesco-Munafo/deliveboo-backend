@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+
     {{-- Restaurant --}}
     <div class="container my-5">
         <h2 class="mb-5">Menu del ristorante "{{ $restaurant->name }}"</h2>
@@ -152,6 +153,7 @@
 
                         </div>
 
+
                         <div class=" card-footer">
                             <div class="buttons d-flex justify-content-between">
                                 <a class="btn btn-primary"
@@ -216,5 +218,6 @@
                 </div>
             @endforeach
         </div>
+
     </div>
 @endsection

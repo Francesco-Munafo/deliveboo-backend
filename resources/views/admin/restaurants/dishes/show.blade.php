@@ -39,10 +39,6 @@
                                     @break
 
                                     @case(6)
-                                        Frutta
-                                    @break
-
-                                    @case(7)
                                         Bibita
                                     @break
 

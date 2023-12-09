@@ -15,6 +15,7 @@
 
         <div class="my-5 row gap-4 flex-wrap">
             @foreach ($restaurants as $restaurant)
+
                 <div class="col">
                     <div class="card rounded-3" style="width:18rem;">
                         @if (str_contains($restaurant->image, 'http'))
@@ -52,6 +53,7 @@
                                     </svg>
                                     Modifica
                                 </a>
+
 
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"

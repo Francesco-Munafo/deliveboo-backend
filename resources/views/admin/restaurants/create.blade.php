@@ -1,13 +1,14 @@
 @extends('layouts.admin')
 
-@section('page-title', 'crea progetto')
+@section('page-title', 'crea ristorante')
 
 @section('content')
+
     <div class="container py-5">
         <div class="row mb-3">
             <div class="col d-flex align-items-center mt-4">
                 <h1 class="flex-grow-1 m-0">
-                    {{ __('Crea un nuovo progetto') }}
+                    {{ __('Crea un nuovo ristorante') }}
                 </h1>
             </div>
         </div>
@@ -58,7 +59,6 @@
             </div>
 
             <div class="mb-2 pt-2 form-floating">
-
                 <div class="list-group">
                     <span class="mb-2 text-warning">Tipo di cucina</span>
                     @foreach ($types as $type)
@@ -69,11 +69,11 @@
                         </label>
                     @endforeach
 
+                    @error('types')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
-            @error('types')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
 
 
             <div class="mb-3">
@@ -82,11 +82,12 @@
                     aria-describedby="image_helper">
                 <div id="image_helper" class="form-text text-white">
                     Carica un'immagine per il progetto corrente
+
+                    @error('image')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
-            @error('image')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
 
             <button type="submit" class="btn btn-warning  text-white mt-2">
                 CREA
