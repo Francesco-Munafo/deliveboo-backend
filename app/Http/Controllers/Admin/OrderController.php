@@ -6,15 +6,18 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
+use App\Models\Restaurant;
 
 class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Restaurant $restaurant)
     {
-        //
+        /* $orders = Order::where('restaurant_id', $restaurant->id)->get();
+
+        return view("admin.restaurants.orders", compact("restaurant", "orders")); */
     }
 
     /**

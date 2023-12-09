@@ -11,13 +11,6 @@ class DashboardController extends Controller
 {
     public function index(User $user)
     {
-        $user = auth()->user();
-
-        if ($user) {
-            $restaurants = $user->restaurants;
-            return view("admin.dashboard", compact("restaurants"));
-        }
-
-        return view("admin.dashboard")->with('message', 'Nessun ristorante trovato per questo utente.');
+        return to_route("admin.restaurants.index");
     }
 }

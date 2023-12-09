@@ -65,8 +65,6 @@
                     <option value="3">Dolce</option>
                     <option value="4">Antipasto</option>
                     <option value="5">Contorno</option>
-                    <option value="6">Frutta</option>
-                    <option value="7">Bibita</option>
                 </select>
 
 

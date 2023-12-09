@@ -8,6 +8,7 @@ use App\Http\Requests\StoreRestaurantRequest;
 use App\Http\Requests\UpdateRestaurantRequest;
 use App\Models\Type;
 use App\Models\Dish;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -71,9 +72,16 @@ class RestaurantController extends Controller
     public function show(Restaurant $restaurant)
     {
         $dishes = Dish::where('restaurant_id', $restaurant->id)->get();
+        //$orders = Order::where('restaurant_id', $restaurant->id)->get();
+
         return view('admin.restaurants.show', compact('restaurant', 'dishes'));
     }
 
+    public function orders(Restaurant $restaurant)
+    {
+        $orders = Order::where('restaurant_id', $restaurant->id)->get();
+        return view('admin.restaurants.orders', compact('restaurant', 'orders'));
+    }
 
     /**
      * Show the form for editing the specified resource.

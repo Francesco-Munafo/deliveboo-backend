@@ -6,6 +6,7 @@ use App\Http\Controllers\Guest\PageController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\Admin\DishController;
+use App\Http\Controllers\Admin\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,10 @@ Route::middleware('auth')
     ->name('admin.')
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
         Route::resource('/restaurants', RestaurantController::class)->parameters(['restaurants' => 'restaurant:slug']);
+        Route::get('/restaurants/{restaurant}/orders', [RestaurantController::class, 'orders'])->name('restaurants.orders');
+
 
         Route::resource('/restaurants/{restaurant}/dishes', DishController::class)->parameters(['restaurant' => 'restaurant:slug', 'dish' => 'dish:slug'])->names([
             'index' => 'restaurant.dishes.index',
@@ -37,10 +41,7 @@ Route::middleware('auth')
             'edit' => 'restaurant.dishes.edit',
             'update' => 'restaurant.dishes.update',
             'destroy' => 'restaurant.dishes.destroy',
-
         ]);
-        //Route::get('/restaurants/{restaurant}/dishes/create', [DishController::class, 'create'])->name('restaurants.dishes.create');
-        //Route::post('/restaurants/{restaurant}/dishes', [DishController::class, 'store'])->name('restaurants.dishes.store');
     });
 
 Route::middleware('auth')->group(function () {
