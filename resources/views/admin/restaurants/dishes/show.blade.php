@@ -3,7 +3,7 @@
 @section('content')
     <div class="container my-5">
 
-        <div class="d-flex gap-4">
+        <div class="row gap-4">
             <div>
                 <div class="d-flex flex-wrap gap-2">
                     <div class="card" style="width: 15rem;">
