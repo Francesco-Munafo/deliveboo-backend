@@ -26,16 +26,11 @@ class RestaurantSeeder extends Seeder
             $new_restaurant->address = $restaurant['address'];
             $new_restaurant->description = $restaurant['description'];
 
-            // Ottieni l'immagine direttamente dall'URL usando file_get_contents
             $image = file_get_contents('https://source.unsplash.com/600x400/?restaurant');
-
-            // Salva l'immagine nel filesystem
-            $imageName = 'restaurant_' . time() . '.jpg'; // Nome unico per l'immagine
+            $imageName = 'restaurant_' . time() . '.jpg';
             Storage::put('placeholders/' . $imageName, $image);
 
-            // Salva il percorso dell'immagine nel campo dell'oggetto Restaurant
             $new_restaurant->image = 'placeholders/' . $imageName;
-
             $new_restaurant->save();
         }
     }

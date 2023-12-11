@@ -23,7 +23,6 @@ class DishSeeder extends Seeder
             $new_dish->description = $dish["description"];
 
             $image = file_get_contents("https://source.unsplash.com/600x400/?" . urlencode($dish['name']));
-            // Salva l'immagine nel filesystem
             $imageName = 'dish_' . time() . '.jpg';
             Storage::put('placeholders/' . $imageName, $image);
             $new_dish->image = 'placeholders/' . $imageName;
