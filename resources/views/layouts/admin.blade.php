@@ -86,28 +86,8 @@
 
         <div style="flex: 1" class="bg_color_gradient container-fluid">
             <div class="row">
-
                 @auth
-                    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block  navbar-dark sidebar collapse">
-                        <div class="position-sticky pt-4">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-
-                                    <a style="padding-left: 12px"
-                                        class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg_select' : '' }} {{ Route::currentRouteName() == 'admin.restaurants.index' ? 'bg_select' : '' }}"
-                                        href="{{ route('admin.dashboard') }}">
-                                        <div class="d-flex gap-1 align-items-center text-uppercase">
-                                            <i class="fs-4 fa-solid fa-tachometer-alt fa-lg fa-fw"></i>
-                                            I tuoi ristoranti
-                                        </div>
-                                    </a>
-
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-
-                    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-5">
+                    <main class="py-5">
                         @yield('content')
                     </main>
                 @endauth
