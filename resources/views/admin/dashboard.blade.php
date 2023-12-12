@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+
     <div class="container-lg px-sm-5">
         <div class="d-flex justify-content-between align-items-center mb-2">
             <span>
@@ -18,9 +19,11 @@
                     <span><i class="fa-solid fa-plus"></i> Nuovo ristorante</span>
                     <span></span>
                 </a>
+
             </button>
 
         </div>
+
 
         <h2 class="text-center fw-bolder text-uppercase mb-4">
             I tuoi ristoranti
@@ -114,6 +117,7 @@
                                             <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i>
                                                 Elimina</button>
                                         </form>
+
                                     </div>
                                 </div>
                             </div>
