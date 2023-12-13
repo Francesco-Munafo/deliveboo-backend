@@ -21,13 +21,15 @@ class RestaurantController extends Controller
     {
         $typeIds = $request->input('type_ids');
 
+        $typeIdsArray = explode(',', $typeIds);
+
         // Debugging
 
         return response()->json([
             'success' => true,
-            'results' => Restaurant::whereHas('types', function ($query) use ($typeIds) {
-                $query->whereIn('type_id', explode(',', $typeIds));
-            })->paginate(12)->withQueryString()
+            'results' => Restaurant::whereHas('types', function ($query) use ($typeIdsArray) {
+                $query->whereIn('type_id', $typeIdsArray);
+            }, '=', count($typeIdsArray))->paginate(12)->withQueryString()
         ]);
     }
 
