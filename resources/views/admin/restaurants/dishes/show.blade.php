@@ -1,116 +1,249 @@
 @extends('layouts.admin')
 
+
+
+
 @section('content')
-    <div class="container my-5">
+    <div class="container-xl px-1 px-md-5">
+        <div class="d-flex justify-content-between align-items-center mb-5">
+            <span class="d-flex align-items-center">
+                <a class="text-dark" href="{{ route('admin.restaurants.show', $restaurant) }}"><i
+                        class="fa-solid fa-arrow-left fs-3 me-2"></i></a>
 
-        <div class="row gap-4">
-            <div>
-                <div class="d-flex flex-wrap gap-2">
-                    <div class="card" style="width: 15rem;">
-                        @if (str_contains($dish->image, 'http'))
-                            <img src="{{ $dish->image }}">
-                        @else
-                            <img src="{{ asset('storage/' . $dish->image) }}" alt="..">
-                        @endif
+                <em class="d-flex gap-1">
+                    <a class="d-none d-md-block text-dark text-decoration-none"
+                        href="{{ route('admin.restaurants.show', $restaurant) }}">
+                        {{ $restaurant->name }}
+                    </a> /
+                    <strong>
+                        <a class="text-dark text-decoration-none"
+                            href="{{ route('admin.restaurant.dishes.show', [$restaurant, $dish]) }}">
+                            {{ $dish->name }}
+                        </a>
+                    </strong>
+                </em>
+            </span>
 
-                        <div class="card-body">
-                            <h4 class="card-title">{{ $dish->name }}</h4>
-                            <span class="card-title">
-                                PORTATA:
-                                @switch($dish->course)
-                                    @case(1)
-                                        Primo piatto
-                                    @break
-
-                                    @case(2)
-                                        Secondo piatto
-                                    @break
-
-                                    @case(3)
-                                        Dolce
-                                    @break
-
-                                    @case(4)
-                                        Antipasto
-                                    @break
-
-                                    @case(5)
-                                        Contorno
-                                    @break
-
-                                    @case(6)
-                                        Bibita
-                                    @break
-
-                                    @default
-                                @endswitch
-                            </span> <br>
-                            <span class="card-title"><strong>PREZZO: {{ $dish->price }}€</strong></span> <br>
-                            <span class="card-title">
-                                @if ($dish->available)
-                                    <em>DISPONIBILE</em>
-                                @else
-                                    <em>ESAURITO</em>
-                                @endif
-                            </span> <br>
-                            <p class="card-text my-4">DESCRIZIONE: {{ $dish->description }}</p>
-                            <span class="card-title">INGREDIENTI: {{ $dish->ingredients }}</span> <br>
-                        </div>
+            <div class="d-flex gap-2 gap-lg-3">
+                <button class="animated-button">
+                    <a href="{{ route('admin.restaurant.dishes.edit', [$restaurant, $dish]) }}"
+                        class="text-decoration-none d-flex align-items-center gap-1">
+                        <span><i class="fa-solid fa-pen"></i> Modifica</span>
+                        <span></span>
+                    </a>
+                </button>
 
 
+                <button class="d-none d-sm-block animated-delete-button" type="button" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal_{{ $dish->id }}">
+                    <span><i class="fa-solid fa-trash"></i> Elimina</span>
+                    <span></span>
+                </button>
 
+                <div class="modal fade" id="exampleModal_{{ $dish->id }}" tabindex="-1"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content bg_select">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5 text-uppercase col_color" id="exampleModalLabel">
+                                    <strong>Elimina il
+                                        piatto</strong>
+                                </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body border-0 text-white">
+                                Sei sicuro di voler eliminare questo piatto?
+                            </div>
+                            <div class="modal-footer border-0">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                                <form action="{{ route('admin.restaurant.dishes.destroy', [$restaurant, $dish]) }}"
+                                    method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i>
+                                        Elimina</button>
+                                </form>
 
-                        <div class=" card-footer">
-                            <div class="buttons d-flex justify-content-center gap-2">
-                                <a class="btn btn-warning"
-                                    href="{{ route('admin.restaurant.dishes.edit', [$restaurant, $dish]) }}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                                        <path
-                                            d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
-                                    </svg>
-                                </a>
-
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal_{{ $dish->id }}">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal_{{ $dish->id }}" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Elimina il
-                                                    progetto
-                                                </h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Sei sicuro di voler eliminare questo progetto?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Annulla</button>
-                                                <form
-                                                    action="{{ route('admin.restaurant.dishes.destroy', [$restaurant, $dish]) }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger">Elimina</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+            </div>
+        </div>
+
+        <div class="row justify-content-around justify-content-md-around justify-content-xl-between">
+            <div class="col-10 mb-4 mb-md-0 col-md-6 position-relative">
+                @if ($dish->available)
+                    <div style="background-color:green;" class="rounded-top-5 text-center">
+                        <strong class="text-white"><em>DISPONIBILE</em></strong>
+                    </div>
+                @else
+                    <div style="background-color: red;" class="rounded-top-5 text-center">
+                        <strong class="text-white"><em>ESAURITO</em></strong>
+                    </div>
+                @endif
+
+                @if (str_contains($dish->image, 'http'))
+                    <img class="rounded-bottom-5 shadow w-100" src="{{ $dish->image }}" alt="dish-image">
+                @else
+                    <img class="rounded-bottom-5 shadow w-100" src="{{ asset('storage/' . $dish->image) }}"
+                        alt="dish-image">
+                @endif
+
+                <div class="badge-price bg_select shadow">
+                    <strong>{{ $dish->price }}€</strong>
+                </div>
+            </div>
+
+            <div class="col-10 col-md-5 d-flex flex-column justify-content-center">
+                <h4 class="mb-0 dish-name text-uppercase">{{ $dish->name }}</h4>
+
+                <span class="fst-italic">
+                    @switch($dish->course)
+                        @case(1)
+                            Primo piatto
+                        @break
+
+                        @case(2)
+                            Secondo piatto
+                        @break
+
+                        @case(3)
+                            Dolce
+                        @break
+
+                        @case(4)
+                            Antipasto
+                        @break
+
+                        @case(5)
+                            Contorno
+                        @break
+
+                        @case(6)
+                            Bibita
+                        @break
+
+                        @default
+                    @endswitch
+                </span>
+
+                <span class="my-3 my-md-4">Ingredienti: {{ $dish->ingredients }}</span>
+
+                <p>{{ $dish->description }}</p>
             </div>
         </div>
     </div>
 @endsection
+
+
+
+
+<style lang="scss" scoped>
+    .animated-button,
+    .animated-delete-button {
+        position: relative;
+        display: inline-block;
+        box-shadow: 0 0 0 2px #3d348b9b;
+        padding: 12px 24px;
+        border: none;
+        font-size: 16px;
+        background-color: inherit;
+        border-radius: 100px;
+        font-weight: 600;
+        cursor: pointer;
+        overflow: hidden;
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+
+        a,
+        span {
+            color: #3d348b9b;
+        }
+
+        span:last-child {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        span:first-child {
+            position: relative;
+            z-index: 1;
+        }
+    }
+
+    .animated-button {
+        span:last-child {
+            box-shadow: 0 0 0 5px #2195f360;
+            background-color: #2196F3;
+        }
+    }
+
+    .animated-button:hover {
+        box-shadow: 0 0 0 5px #2195f360;
+    }
+
+    .animated-delete-button {
+        span:last-child {
+            box-shadow: 0 0 0 5px #2195f360;
+            background-color: red;
+        }
+    }
+
+    .animated-delete-button:hover {
+        box-shadow: 0 0 0 5px rgba(255, 0, 0, 0.3);
+    }
+
+    .animated-button:hover,
+    .animated-delete-button:hover {
+
+        a,
+        span {
+            color: #ffffff;
+        }
+
+        span:last-child {
+            width: 190px;
+            height: 150px;
+            opacity: 1;
+        }
+    }
+
+    .animated-button:active,
+    .animated-delete-button:active {
+        scale: 0.95;
+    }
+
+    .dish-name {
+        font-weight: bold;
+    }
+
+    .badge-price {
+        color: white;
+        padding: 15px;
+        border-radius: 50%;
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        font-size: 1.7rem;
+
+    }
+
+    @media screen and (max-width:450px) {
+        .badge-price {
+            padding: 7px;
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            font-size: large;
+        }
+    }
+</style>
