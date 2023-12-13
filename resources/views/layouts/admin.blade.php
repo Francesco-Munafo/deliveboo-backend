@@ -34,8 +34,7 @@
             <div class="container-lg">
                 <div class="d-none d-md-flex align-items-center">
                     <img style="width: 80px" src="{{ asset('img/wired-lineal-13-pizza.gif') }}" alt="pizza">
-                    <img style="width: 200px" src="{{ asset('img/Screenshot_2023-12-09_153609-removebg-preview.png') }}"
-                        alt="logo">
+                    <img style="width: 200px" src="{{ asset('img/logo1.png') }}" alt="logo">
                 </div>
 
 
@@ -99,9 +98,13 @@
                 @endguest
             </div>
 
-            <footer>
-                <p style="font-size: small" class="mt-3 text-body-secondary text-center">Deliveboo | © 2023</p>
-            </footer>
+            @guest
+                <footer>
+                    <p style="font-size: small;" class="mt-3 text-body-secondary text-center">Deliveboo | © 2023</p>
+                </footer>
+            @endguest
+
+
         </div>
     </div>
 </body>

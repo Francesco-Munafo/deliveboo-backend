@@ -1,13 +1,12 @@
 @extends('layouts.admin')
 
 @section('content')
-
     <div class="container-lg px-sm-5">
         <div class="d-flex justify-content-between align-items-center mb-2">
             <span>
                 <em>{{ Auth::user()->name }} /
                     <strong>
-                        <a class="text-dark" href="{{ route('admin.restaurants.index') }}">
+                        <a class="text-dark text-decoration-none" href="{{ route('admin.restaurants.index') }}">
                             Ristoranti({{ count($restaurants) }})
                         </a>
                     </strong>
