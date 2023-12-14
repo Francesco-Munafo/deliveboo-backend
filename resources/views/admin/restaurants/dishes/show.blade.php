@@ -1,14 +1,11 @@
 @extends('layouts.admin')
 
-
-
-
 @section('content')
     <div class="container-xl px-1 px-md-5">
         <div class="d-flex justify-content-between align-items-center mb-5">
             <span class="d-flex align-items-center">
                 <a class="text-dark" href="{{ route('admin.restaurants.show', $restaurant) }}"><i
-                        class="fa-solid fa-arrow-left fs-3 me-2"></i></a>
+                        class="fa-solid fa-circle-arrow-left fs-3 me-2"></i></a>
 
                 <em class="d-flex gap-1">
                     <a class="d-none d-md-block text-dark text-decoration-none"
@@ -86,10 +83,11 @@
                 @endif
 
                 @if (str_contains($dish->image, 'http'))
-                    <img class="rounded-bottom-5 shadow w-100" src="{{ $dish->image }}" alt="dish-image">
-                @else
-                    <img class="rounded-bottom-5 shadow w-100" src="{{ asset('storage/' . $dish->image) }}"
+                    <img style="object-fit: cover" class="rounded-bottom-5 w-100 shadow" src="{{ $dish->image }}"
                         alt="dish-image">
+                @else
+                    <img style="object-fit:cover;" class="dish-img rounded-bottom-5 w-100 shadow"
+                        src="{{ asset('storage/' . $dish->image) }}" alt="dish-image">
                 @endif
 
                 <div class="badge-price bg_select shadow">
@@ -237,13 +235,21 @@
 
     }
 
+    .dish-img {
+        min-height: 51.7vh;
+    }
+
     @media screen and (max-width:450px) {
         .badge-price {
-            padding: 7px;
+            padding: 10px;
             position: absolute;
             top: -5px;
             right: -10px;
             font-size: large;
+        }
+
+        .dish-img {
+            min-height: 35vh;
         }
     }
 </style>

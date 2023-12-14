@@ -42,6 +42,11 @@ class OrderSeeder extends Seeder
             $new_order->phone = $fakerIt->phoneNumber();
             $new_order->created_at = Carbon::createFromTimestamp($timestamp);
 
+            if (rand(1, 100) <= 50) {
+                $new_order->notes = '';
+            } else {
+                $new_order->notes = $faker->sentence();
+            }
             $new_order->save();
         }
     }

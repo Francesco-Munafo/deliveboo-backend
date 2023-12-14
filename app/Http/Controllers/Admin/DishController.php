@@ -24,11 +24,11 @@ class DishController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create($restaurant_id)
+    public function create(Restaurant $restaurant)
     {
-        $dishes = Dish::where('restaurant_id', $restaurant_id)->first();
+        $dishes = Dish::where('restaurant_id', $restaurant->id)->first();
 
-        return view("admin.restaurants.dishes.create", compact("dishes", "restaurant_id"));
+        return view("admin.restaurants.dishes.create", ['dishes' => $dishes, 'restaurant' => $restaurant]);
     }
 
     /**

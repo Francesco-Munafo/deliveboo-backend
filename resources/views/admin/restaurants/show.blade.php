@@ -5,7 +5,7 @@
         <div class="d-flex justify-content-between align-items-center mb-3">
             <span class="d-none d-sm-flex align-items-center">
                 <a class="d-none d-sm-block text-dark" href="{{ route('admin.restaurants.index') }}"><i
-                        class="fa-solid fa-arrow-left fs-3 me-2"></i></a>
+                        class="fa-solid fa-circle-arrow-left fs-3 me-2"></i></a>
 
                 <em>
                     <a class="text-dark text-decoration-none" href="{{ route('admin.restaurants.index') }}">
@@ -87,70 +87,77 @@
             </button>
         </div>
 
-        <h2 class="fw-bolder text-uppercase text-center mb-4">
-            Menù
-        </h2>
+        @if (count($dishes) > 0)
+            <h2 class="fw-bolder text-uppercase text-center mb-4">
+                Menù
+            </h2>
 
-        <div class="row justify-content-around justify-content-md-center flex-wrap gap-5">
-            @foreach ($dishes as $dish)
-                <div class="col-12 col-sm-4 col-lg-3 col-xxl-2">
-                    <a class="text-decoration-none d-flex justify-content-center"
-                        href="{{ route('admin.restaurant.dishes.show', [$restaurant, $dish]) }}">
-                        <div class="dish-card">
-                            @if (str_contains($dish->image, 'http'))
-                                <img src="{{ asset($dish->image) }}" alt="Dish preview">
-                            @else
-                                <img src="{{ asset('storage/' . $dish->image) }}" alt="..">
-                            @endif
-                            <div class="textBox">
-                                <p class="text text-uppercase head mb-0">{{ $dish->name }}</p>
-                                <span class="card-title">
-                                    @if ($dish->available)
-                                        <em>Disponibile</em>
-                                    @else
-                                        <em>Esaurito</em>
-                                    @endif
-                                </span>
-                                <span class="text-uppercase">
-                                    @switch($dish->course)
-                                        @case(1)
-                                            Primo piatto
-                                        @break
+            <div class="row justify-content-around justify-content-md-center flex-wrap gap-5">
+                @foreach ($dishes as $dish)
+                    <div class="col-12 col-sm-4 col-lg-3 col-xxl-2">
+                        <a class="text-decoration-none d-flex justify-content-center"
+                            href="{{ route('admin.restaurant.dishes.show', [$restaurant, $dish]) }}">
+                            <div class="dish-card">
+                                @if (str_contains($dish->image, 'http'))
+                                    <img src="{{ asset($dish->image) }}" alt="Dish preview">
+                                @else
+                                    <img src="{{ asset('storage/' . $dish->image) }}" alt="..">
+                                @endif
+                                <div class="textBox">
+                                    <p class="text text-uppercase head mb-0">{{ $dish->name }}</p>
+                                    <span class="card-title">
+                                        @if ($dish->available)
+                                            <em>Disponibile</em>
+                                        @else
+                                            <em>Esaurito</em>
+                                        @endif
+                                    </span>
+                                    <span class="text-uppercase">
+                                        @switch($dish->course)
+                                            @case(1)
+                                                Primo piatto
+                                            @break
 
-                                        @case(2)
-                                            Secondo piatto
-                                        @break
+                                            @case(2)
+                                                Secondo piatto
+                                            @break
 
-                                        @case(3)
-                                            Dolce
-                                        @break
+                                            @case(3)
+                                                Dolce
+                                            @break
 
-                                        @case(4)
-                                            Antipasto
-                                        @break
+                                            @case(4)
+                                                Antipasto
+                                            @break
 
-                                        @case(5)
-                                            Contorno
-                                        @break
+                                            @case(5)
+                                                Contorno
+                                            @break
 
-                                        @case(6)
-                                            Frutta
-                                        @break
+                                            @case(6)
+                                                Frutta
+                                            @break
 
-                                        @case(7)
-                                            Bibita
-                                        @break
+                                            @case(7)
+                                                Bibita
+                                            @break
 
-                                        @default
-                                    @endswitch
-                                </span>
-                                <p class="text price">{{ $dish->price }} €</p>
+                                            @default
+                                        @endswitch
+                                    </span>
+                                    <p class="text price">{{ $dish->price }} €</p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
-            @endforeach
-        </div>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        @else
+            <div class="d-flex flex-column align-items-center pt-5">
+                <span class="fs-3">non hai nessun piatto</span>
+                <i class="fa-regular fa-face-sad-cry fs-1"></i>
+            </div>
+        @endif
     </div>
 @endsection
 
