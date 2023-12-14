@@ -32,11 +32,12 @@
     <div id="app" style="min-height: 100vh; overflow-x:hidden;" class="d-flex flex-column">
         <header class="bg_color navbar py-3 px-1 p-sm-3 p-md-1 shadow">
             <div class="container-lg">
-                <div class="d-none d-md-flex align-items-center">
-                    <img style="width: 80px" src="{{ asset('img/wired-lineal-13-pizza.gif') }}" alt="pizza">
-                    <img style="width: 200px" src="{{ asset('img/logo1.png') }}" alt="logo">
-                </div>
-
+                <a href="http://localhost:5174/#/">
+                    <div class="d-none d-md-flex align-items-center">
+                        <img style="width: 80px" src="{{ asset('img/wired-lineal-13-pizza.gif') }}" alt="pizza">
+                        <img style="width: 200px" src="{{ asset('img/logo1.png') }}" alt="logo">
+                    </div>
+                </a>
 
 
                 <div class="d-flex gap-3">
@@ -61,6 +62,12 @@
                     @endguest
 
                     @auth
+                        <button class="d-none d-sm-block btn header-button">
+                            <a class="col_select text-decoration-none" href="{{ route('admin.restaurants.index') }}">
+                                <i class="fa-solid fa-burger"></i> ristoranti
+                            </a>
+                        </button>
+
                         <button class="cssbuttons-io-button">
                             <div class="icon">
                                 <img style="width: 40px" src="{{ asset('img/wired-lineal-268-avatar-man.gif') }}"
@@ -127,7 +134,6 @@
     }
 
     .header-button:hover {
-        letter-spacing: 3px;
         background-color: #3d348b;
         box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
 

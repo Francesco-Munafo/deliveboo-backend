@@ -44,13 +44,14 @@
                 @enderror
 
                 <input id="password" type="password" placeholder="Password" class="form--input" name="password" required
-                    autocomplete="current-password">
+                    autocomplete="new-password">
 
                 <input id="password-confirm" type="password" placeholder="Conferma password"
                     class="form--input
                     @error('password-confirm') is-invalid mb-0 @enderror @error('password') is-invalid mb-0 @enderror"
-                    name="password-confirm" value="{{ old('password-confirm') }}" required autocomplete="new-password"
+                    name="password_confirmation" value="{{ old('password-confirm') }}" required autocomplete="new-password"
                     autofocus>
+
                 @error('password-confirm')
                     <span class="invalid-feedback mb-2" role="alert">
                         <strong>{{ $message }}</strong>
@@ -65,7 +66,7 @@
 
 
                 <button class="form--submit mt-2" type="submit">
-                    Accedi
+                    Registrati
                 </button>
 
                 <span style="font-size: 13px;" class="mt-2">
@@ -76,9 +77,30 @@
 
         </div>
     </div>
+
+    {{--
+
+    <input id="password" type="password" placeholder="Password" class="form--input" name="password" required
+        autocomplete="new-password">
+
+    <input id="password-confirm" type="password" placeholder="Conferma password"
+        class="form--input
+                    @error('password-confirm') is-invalid mb-0 @enderror @error('password') is-invalid mb-0 @enderror"
+        name="password_confirmation" value="{{ old('password-confirm') }}" required autocomplete="new-password" autofocus>
+
+    @error('password-confirm')
+        <span class="invalid-feedback mb-2" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror
+    @error('password')
+        <span class="invalid-feedback mb-2" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror
+    
+    --}}
 @endsection
-
-
 
 <style lang="scss" scoped>
     .form {

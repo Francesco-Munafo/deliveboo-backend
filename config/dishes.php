@@ -2,6 +2,7 @@
 
 
 return [
+    //daniel
     [
         "name" => "pasta con tonno",
         "description" => "cucinata al dente.",
@@ -550,6 +551,7 @@ return [
         ],
     ],
 
+    //elisa
     [
         "name" => "Sformato di Zucchine",
         "description" => "Zucchine gratinate al forno con formaggio fuso e pangrattato.",
@@ -1132,6 +1134,7 @@ return [
             "Olio d'oliva",
         ],
     ],
+    //valerio
     [
         "name" => "Zuppa di Lenticchie",
         "description" => "Zuppa calda e cremosa a base di lenticchie, cipolla e sedano.",
@@ -1658,6 +1661,7 @@ return [
             "Formaggio",
         ],
     ],
+    //marco
     [
         "name" => "Risotto al Nero di Seppia",
         "description" => "Risotto con il nero di seppia e gamberi.",
@@ -2129,6 +2133,7 @@ return [
         ],
     ],
 
+    //francesco
     [
         "name" => "Brew Spirit",
         "description" => "Infuso di erbe aromatiche con note di arancia e cardamomo.",

@@ -14,7 +14,7 @@ class TypeSeeder extends Seeder
      */
     public function run(): void
     {
-        $types = ['ITALIANA', 'FRANCESE', 'GIAPPONESE', 'MESSICANA', 'CINESE', 'AMERICANA', 'INDIANA', 'MEDITERRANEA'];
+        $types = ['ITALIANA', 'FRANCESE', 'GIAPPONESE', 'MESSICANA', 'CINESE', 'AMERICANA', 'INDIANA', 'ALTRO'];
 
         foreach ($types as $type) {
             $new_type = new Type;

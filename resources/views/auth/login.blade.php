@@ -19,23 +19,22 @@
                     value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                 <input id="password" type="password" placeholder="Password"
-                    class="form--input mb-0 @error('password') is-invalid @enderror" name="password" required
+                    class="form--input mb-0 @error('password') is-invalid mb-0 @enderror" name="password" required
                     autocomplete="current-password">
                 @if (Route::has('password.request'))
                     <a style="color: #3d348b; font-size:13px;"
-                        class="btn btn-link px-0 text-decoration-none align-self-start"
+                        class="btn btn-link p-0 text-decoration-none align-self-start @error('password') is-invalid mb-0 @enderror"
                         href="{{ route('password.request') }}">
                         Password dimenticata?
                     </a>
                 @endif
-
                 @error('password')
-                    <span class="invalid-feedback my-1" role="alert">
+                    <span class="invalid-feedback mb-1 mt-0" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
                 @error('email')
-                    <span class="invalid-feedback my-1" role="alert">
+                    <span class="invalid-feedback mb-1 mt-0" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
