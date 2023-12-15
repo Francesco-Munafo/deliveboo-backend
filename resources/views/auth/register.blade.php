@@ -1,71 +1,66 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container my-3">
+    <div class="container my-2">
         <div class="row justify-content-around">
             <div class="d-none d-xl-flex align-items-center col-5">
                 <img class="img-fluid" src="{{ asset('img/logo.png') }}" alt="logo">
             </div>
 
-            <form class="form col-12 col-md-9 col-xl-5 px-5 d-flex flex-column justify-content-center" method="POST"
+            <form id="registrationForm" class="form col-12 col-md-9 col-xl-5 px-5 d-flex flex-column" method="POST"
                 action="{{ route('register') }}">
-
                 @csrf
                 <span class="signup">Registrazione</span>
 
+
+
                 <input id="name" type="text" placeholder="Nome e cognome"
-                    class="form--input
-                    @error('name') is-invalid mb-0 @enderror" name="name"
-                    value="{{ old('name') }}" required autocomplete="name" autofocus>
-                @error('name')
-                    <span class="invalid-feedback mb-2" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                    class="mb-0 form--input @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}"
+                    required autocomplete="name" autofocus>
+
+
 
                 <input id="email" type="email" placeholder="Indirizzo Email"
-                    class="form--input
-                    @error('email') is-invalid mb-0 @enderror" name="email"
+                    class="mt-4 mb-0 form--input @error('email') is-invalid @enderror" name="email"
                     value="{{ old('email') }}" required autocomplete="email" autofocus>
-                @error('email')
-                    <span class="invalid-feedback mb-2" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <div style="height: 25px;" class="d-flex align-items-center">
+                    @error('email')
+                        <span style="font-size: 13px" class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
+                </div>
+
+
 
                 <input id="vat_number" type="text" placeholder="Partita IVA"
-                    class="form--input
-                    @error('vat_number') is-invalid mb-0 @enderror" name="vat_number"
+                    class="mb-0 form--input @error('vat_number') is-invalid @enderror" name="vat_number"
                     value="{{ old('vat_number') }}" required autocomplete="vat_number" autofocus>
-                @error('vat_number')
-                    <span class="invalid-feedback mb-2" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <div style="height: 25px" class="d-flex align-items-center">
+                    <span style="font-size: 13px" id="vat_number-error" class="text-danger"></span>
+                </div>
 
-                <input id="password" type="password" placeholder="Password" class="form--input" name="password" required
-                    autocomplete="new-password">
+
+
+                <input id="password" type="password" placeholder="Password" class="mb-0 form--input" name="password"
+                    required autocomplete="new-password">
+                <div style="height: 25px" class="d-flex align-items-center">
+                    <span style="font-size: 13px" id="password-error-2" class="text-danger"></span>
+                </div>
+
+
 
                 <input id="password-confirm" type="password" placeholder="Conferma password"
-                    class="form--input
-                    @error('password-confirm') is-invalid mb-0 @enderror @error('password') is-invalid mb-0 @enderror"
+                    class="mb-0 form--input @error('password-confirm') is-invalid @enderror @error('password') is-invalid @enderror"
                     name="password_confirmation" value="{{ old('password-confirm') }}" required autocomplete="new-password"
                     autofocus>
-
-                @error('password-confirm')
-                    <span class="invalid-feedback mb-2" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-                @error('password')
-                    <span class="invalid-feedback mb-2" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <div style="height: 25px" class="d-flex align-items-center">
+                    <span style="font-size: 13px" id="password-error" class="text-danger"></span>
+                </div>
 
 
 
-                <button class="form--submit mt-2" type="submit">
+                <button class="form--submit mt-1" type="submit">
                     Registrati
                 </button>
 
@@ -78,28 +73,80 @@
         </div>
     </div>
 
-    {{--
+    <script>
+        // Funzione per validare la conferma della password
+        function validatePassword() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('password-confirm').value;
+            const passwordError = document.getElementById('password-error');
 
-    <input id="password" type="password" placeholder="Password" class="form--input" name="password" required
-        autocomplete="new-password">
+            if (password !== confirmPassword) {
+                passwordError.innerText = 'Le password non coincidono';
+                return false;
+            } else {
+                passwordError.innerText = '';
+                return true;
+            }
+        }
+        document.getElementById('password').addEventListener('input', validatePassword);
+        document.getElementById('password-confirm').addEventListener('input', validatePassword);
 
-    <input id="password-confirm" type="password" placeholder="Conferma password"
-        class="form--input
-                    @error('password-confirm') is-invalid mb-0 @enderror @error('password') is-invalid mb-0 @enderror"
-        name="password_confirmation" value="{{ old('password-confirm') }}" required autocomplete="new-password" autofocus>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            if (!validatePassword()) {
+                event.preventDefault();
+            }
+        });
 
-    @error('password-confirm')
-        <span class="invalid-feedback mb-2" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror
-    @error('password')
-        <span class="invalid-feedback mb-2" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror
-    
-    --}}
+
+
+        // Funzione per validare la lunghezza della partita IVA
+        function validateVatNumber() {
+            const vatNumber = document.getElementById('vat_number').value;
+            return vatNumber.length === 11;
+        }
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            const vatError = document.getElementById('vat_number-error');
+            if (!validateVatNumber()) {
+                vatError.innerText = 'La partita IVA deve essere di 11 caratteri';
+                event.preventDefault();
+            } else {
+                vatError.innerText = '';
+            }
+        });
+        document.getElementById('vat_number').addEventListener('input', function() {
+            const vatError = document.getElementById('vat_number-error');
+            if (!validateVatNumber()) {
+                vatError.innerText = 'La partita IVA deve essere di 11 caratteri';
+            } else {
+                vatError.innerText = '';
+            }
+        });
+
+
+
+        // Funzione per validare la lunghezza della password
+        function validatePasswordLength() {
+            const password = document.getElementById('password').value;
+            return password.length >= 8;
+        }
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            const passwordError = document.getElementById('password-error-2');
+            if (!validatePasswordLength()) {
+                passwordError.innerText = 'La password deve contenere almeno 8 caratteri';
+                event.preventDefault();
+            } else {
+                passwordError.innerText = '';
+            }
+        });
+        document.getElementById('password').addEventListener('input', function() {
+            const passwordError = document.getElementById('password-error-2');
+            if (!validatePasswordLength()) {
+                passwordError.innerText = 'La password deve contenere almeno 8 caratteri';
+            } else {
+                passwordError.innerText = '';
+            }
+        });
+    </script>
 @endsection
 
 <style lang="scss" scoped>

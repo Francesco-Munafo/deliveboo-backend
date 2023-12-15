@@ -32,9 +32,11 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class . ',email'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'vat_number' => ['required', 'string', 'min:11', 'max:11'],
+        ], [
+            'email.unique' => 'Questa email è già in uso.',
         ]);
 
         $user = User::create([
