@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Orders\OrderRequest;
+use App\Http\Requests\Orders\PaymentRequest;
+use App\Http\Requests\StoreOrderRequest;
+use App\Models\Order;
 use Braintree\Gateway;
 use Illuminate\Http\Request;
 
@@ -21,7 +23,7 @@ class OrderController extends Controller
 
         return response()->json($data, 200);
     }
-    public function makePayment(OrderRequest $request, Gateway $gateway)
+    public function makePayment(PaymentRequest $request, Gateway $gateway)
     {
         $result = $gateway->transaction()->sale([
             'amount' => $request['paymentData']['amount'],
@@ -32,6 +34,32 @@ class OrderController extends Controller
         ]);
         if ($result->success) {
             $data = [
+                'success' => true,
+                'message' => 'Transazione eseguita con successo!'
+            ];
+            return response()->json($data, 200);
+        } else {
+            $data = [
+                'success' => false,
+                'message' => 'Transazione fallita!'
+            ];
+            return response()->json($data, 401);
+        }
+    }
+
+    public function newOrder(StoreOrderRequest $request)
+    {
+
+        $validated = $request->validated();
+
+        // $new_order = new Order($validated);
+        //$new_order->save();
+
+        $new_order = Order::create($validated);
+
+        if ($new_order) {
+            $data = [
+                'order' => $new_order,
                 'success' => true,
                 'message' => 'Transazione eseguita con successo!'
             ];
