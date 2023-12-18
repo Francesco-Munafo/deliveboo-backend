@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\LeadController;
 use App\Http\Controllers\Api\RestaurantController;
 use App\Http\Controllers\Api\TypeController;
 use Illuminate\Http\Request;
@@ -28,3 +29,6 @@ Route::get('restaurants/{restaurant:slug}', [RestaurantController::class, 'show'
 //filter
 Route::get('types', [TypeController::class, 'index'])->name('api.types');
 Route::get('types/{type:slug}', [TypeController::class, 'show']);
+
+//mail
+Route::post('cart', [LeadController::class, 'store']);

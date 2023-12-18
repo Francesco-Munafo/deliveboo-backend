@@ -18,9 +18,9 @@ class UpdateDishRequest extends FormRequest
     {
         return [
             'name' => 'required|min:2|max:50',
-            'price' => 'required',
+            'price' => 'required|min:0.10|regex:/^\d+(\.\d{1,2})?$/',
             'description' => 'nullable',
-            'image' => 'nullable|image',
+            'image' => 'required|image',
             'available' => 'required',
             'course' => 'required',
             'ingredients' => 'required',
@@ -38,6 +38,9 @@ class UpdateDishRequest extends FormRequest
             'image.image' => "L'immagine deve essere un file di tipo PNG,SVG,JPG,JPEG",
             'course.required' => 'La portata è obbligatoria!',
             'avialable.required' => 'La disponibilità è obbligatoria!',
+            'price.required' => 'Il prezzo è obbligatorio!',
+            'price.min' => 'Il prezzo deve essere minimo 0,10€',
+            'price.regex' => 'Il prezzo deve essere un numero intero o con il . separatore',
         ];
     }
 }

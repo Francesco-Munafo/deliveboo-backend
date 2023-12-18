@@ -21,6 +21,12 @@ use App\Http\Controllers\Admin\OrderController;
 
 /* Admin routes */
 
+/* Route::get('/mailable', function () {
+    $lead = App\Models\Lead::find(1);
+
+    return new App\Mail\NewLeadEmailMd($lead);
+}); */
+
 Route::middleware('auth')
     ->prefix('admin')
     ->name('admin.')
