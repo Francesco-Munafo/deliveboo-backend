@@ -30,6 +30,9 @@ Route::get('restaurants/{restaurant:slug}', [RestaurantController::class, 'show'
 Route::get('orders/generate', [OrderController::class, 'generate']);
 Route::post('orders/make/payment', [OrderController::class, 'makePayment']);
 
+//order
+Route::post('orders/newOrder', [OrderController::class, 'newOrder']);
+
 //filter
 Route::get('types', [TypeController::class, 'index'])->name('api.types');
 Route::get('types/{type:slug}', [TypeController::class, 'show']);
