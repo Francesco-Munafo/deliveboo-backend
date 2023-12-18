@@ -22,8 +22,8 @@ class OrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'token' => 'required',
-            'amount' => 'required'
+            'paymentData.nonce' => 'required',
+            'paymentData.amount' => 'required'
         ];
     }
 }
