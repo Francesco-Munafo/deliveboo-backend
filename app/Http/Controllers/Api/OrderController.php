@@ -24,8 +24,8 @@ class OrderController extends Controller
     public function makePayment(OrderRequest $request, Gateway $gateway)
     {
         $result = $gateway->transaction()->sale([
-            'amount' => $request->amount,
-            'paymentMethodNonce' => $request->token,
+            'amount' => $request['paymentData']['amount'],
+            'paymentMethodNonce' => $request['paymentData']['nonce'],
             'options' => [
                 'submitForSettlement' => true
             ]
@@ -43,6 +43,5 @@ class OrderController extends Controller
             ];
             return response()->json($data, 401);
         }
-        return 'make payment';
     }
 }
