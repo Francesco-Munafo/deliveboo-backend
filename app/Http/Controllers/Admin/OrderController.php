@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -34,10 +36,14 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Restaurant $restaurant, Order $order)
     {
-        //
+        // Carica altri dettagli dell'ordine se necessario
+        $order = Order::with('dishes')->find($order->id);
+
+        return view('admin.restaurants.orders.show', compact('restaurant', 'order'));
     }
+
 
     /**
      * Show the form for editing the specified resource.

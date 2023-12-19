@@ -49,15 +49,14 @@ class OrderController extends Controller
 
     public function newOrder(StoreOrderRequest $request)
     {
-
         $validated = $request->validated();
-
-        // $new_order = new Order($validated);
-        //$new_order->save();
-
         $new_order = Order::create($validated);
 
         if ($new_order) {
+            $cartDishIds = collect($validated['cart'])->pluck('id')->toArray();
+
+            $new_order->dishes()->attach($cartDishIds);
+
             $data = [
                 'order' => $new_order,
                 'success' => true,

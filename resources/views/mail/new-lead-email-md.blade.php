@@ -14,8 +14,8 @@
 
     <p>
         Hai ricevuto un nuovo ordine da: <br>
-        Nome e cognome: {{ $lead->name }} {{ $lead->surname }} <br>
-        Email: {{ $lead->email }} <br>
+        Nome e cognome: {{ $lead->username }} <br>
+        Email: {{ $lead->user_mail }} <br>
         Telefono: {{ $lead->phone }}
     </p>
 
