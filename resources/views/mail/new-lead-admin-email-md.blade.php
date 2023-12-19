@@ -9,13 +9,11 @@
 
 <body>
     <h1>
-        Ciao {{ $lead->username }}!
+        Ciao Admin!
     </h1>
 
     <p>
-        Prepara la tavola! <br>
-        Il tuo ordine di Deliveboo sta arrivando! <br>
-        Ecco un riepilogo dei dati che hai inserito: <br>
+        Hai ricevuto un nuovo ordine da: <br>
         Nome e cognome: {{ $lead->username }} <br>
         Email: {{ $lead->user_mail }} <br>
         Telefono: {{ $lead->phone }}

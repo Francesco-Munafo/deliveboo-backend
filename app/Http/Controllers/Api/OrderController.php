@@ -8,6 +8,7 @@ use App\Http\Requests\StoreOrderRequest;
 use App\Models\Order;
 use Braintree\Gateway;
 use Illuminate\Http\Request;
+use App\Models\Dish;
 
 class OrderController extends Controller
 {
@@ -52,11 +53,16 @@ class OrderController extends Controller
         $validated = $request->validated();
         $new_order = Order::create($validated);
 
+        foreach ($validated['cart'] as $item) {
+            $dish = Dish::find($item['id']);
+            $qty = $item['quantity'];
+
+            if ($dish) {
+                $new_order->dishes()->attach($dish->id, ['qty' => $qty]);
+            }
+        }
+
         if ($new_order) {
-            $cartDishIds = collect($validated['cart'])->pluck('id')->toArray();
-
-            $new_order->dishes()->attach($cartDishIds);
-
             $data = [
                 'order' => $new_order,
                 'success' => true,

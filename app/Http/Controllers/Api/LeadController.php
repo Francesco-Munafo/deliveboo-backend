@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Mail\NewLeadAdminEmailMd;
 use App\Mail\NewLeadEmailMd;
 use App\Models\Lead;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class LeadController extends Controller
             'address' => 'required',
             'user_mail' => 'required|email',
             'phone' => 'required|regex:/^\+?[0-9]+$/',
-            'notes' => 'max:200',
+            'notes' => 'nullable|max:200',
         ]);
 
 
@@ -40,8 +41,10 @@ class LeadController extends Controller
         // save the new lead in the db
         $lead = Lead::create($request->all());
 
-        // send email to my self
-        Mail::to($lead->email)->send(new NewLeadEmailMd($lead));
+        // send email to user
+        Mail::to($lead->user_mail)->send(new NewLeadEmailMd($lead));
+        // send email to deliveboo
+        Mail::to("info@deliveboo.com")->send(new NewLeadAdminEmailMd($lead));
 
         // return a json success response
 

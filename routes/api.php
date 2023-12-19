@@ -39,4 +39,4 @@ Route::get('types', [TypeController::class, 'index'])->name('api.types');
 Route::get('types/{type:slug}', [TypeController::class, 'show']);
 
 //mail
-Route::post('cart', [LeadController::class, 'store']);
+Route::post('mail', [LeadController::class, 'store']);
