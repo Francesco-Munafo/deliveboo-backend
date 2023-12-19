@@ -80,6 +80,7 @@ class RestaurantController extends Controller
     public function orders(Restaurant $restaurant)
     {
         $orders = Order::where('restaurant_id', $restaurant->id)->get();
+        //dd($orders);
         return view('admin.restaurants.orders', compact('restaurant', 'orders'));
     }
 

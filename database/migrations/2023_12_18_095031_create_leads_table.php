@@ -14,14 +14,10 @@ return new class extends Migration
         Schema::create('leads', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50);
-            $table->string('surname', 50);
-            $table->string('city');
-            $table->string('home');
-            $table->string('postal_code');
             $table->string('email');
             $table->string('address');
             $table->string('phone');
-            $table->text('message');
+            $table->text('notes');
             $table->timestamps();
         });
     }

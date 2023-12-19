@@ -23,20 +23,13 @@
 
     <p>
         Il cibo da spedire a: <br>
-        Città: {{ $lead->city }} <br>
-        Codice fiscale: {{ $lead->postal_code }} <br>
         Indirizzo: {{ $lead->address }} <br>
-        @if ($lead->home)
-            Casa: {{ $lead->home }}
-        @endif
     </p>
 
-    @if ($lead->message)
-        <p>
-            Message: <br>
-            {{ $lead->message }}
-        </p>
-    @endif
+    <p>
+        Message: <br>
+        {{ $lead->notes }}
+    </p>
 </body>
 
 </html>

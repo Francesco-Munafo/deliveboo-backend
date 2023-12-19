@@ -22,7 +22,7 @@ class LeadController extends Controller
             'address' => 'required',
             'email' => 'required|email',
             'phone' => 'required|regex:/^\+?[0-9]+$/',
-            'note' => 'required|max:200',
+            'notes' => 'required|max:200',
         ]);
 
 

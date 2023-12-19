@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\LeadController;
+use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\RestaurantController;
 use App\Http\Controllers\Api\TypeController;
 use Illuminate\Http\Request;
@@ -25,6 +26,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('restaurants', [RestaurantController::class, 'index'])->name('api.restaurants');
 Route::get('restaurants/types', [RestaurantController::class, 'getRestaurantsByTypes']);
 Route::get('restaurants/{restaurant:slug}', [RestaurantController::class, 'show']);
+
+//braintree
+Route::get('orders/generate', [OrderController::class, 'generate']);
+Route::post('orders/make/payment', [OrderController::class, 'makePayment']);
 
 //filter
 Route::get('types', [TypeController::class, 'index'])->name('api.types');
