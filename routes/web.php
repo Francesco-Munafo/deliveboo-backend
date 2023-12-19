@@ -21,6 +21,12 @@ use App\Http\Controllers\Admin\OrderController;
 
 /* Admin routes */
 
+/* Route::get('/mailable', function () {
+    $lead = App\Models\Lead::find(1);
+
+    return new App\Mail\NewLeadEmailMd($lead);
+}); */
+
 Route::middleware('auth')
     ->prefix('admin')
     ->name('admin.')
@@ -28,8 +34,10 @@ Route::middleware('auth')
         Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
         Route::resource('/restaurants', RestaurantController::class)->parameters(['restaurants' => 'restaurant:slug']);
+
         Route::get('/restaurants/{restaurant}/orders', [RestaurantController::class, 'orders'])->name('restaurants.orders');
 
+        Route::resource('/orders', OrderController::class);
 
         Route::resource('/restaurants/{restaurant}/dishes', DishController::class)->parameters(['restaurant' => 'restaurant:slug', 'dish' => 'dish:slug'])->names([
             'index' => 'restaurant.dishes.index',

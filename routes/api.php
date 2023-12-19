@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\LeadController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\RestaurantController;
 use App\Http\Controllers\Api\TypeController;
@@ -36,3 +37,6 @@ Route::post('orders/newOrder', [OrderController::class, 'newOrder']);
 //filter
 Route::get('types', [TypeController::class, 'index'])->name('api.types');
 Route::get('types/{type:slug}', [TypeController::class, 'show']);
+
+//mail
+Route::post('cart', [LeadController::class, 'store']);
