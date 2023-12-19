@@ -72,15 +72,16 @@ class RestaurantController extends Controller
     public function show(Restaurant $restaurant)
     {
         $dishes = Dish::where('restaurant_id', $restaurant->id)->get();
-        //$orders = Order::where('restaurant_id', $restaurant->id)->get();
 
         return view('admin.restaurants.show', compact('restaurant', 'dishes'));
     }
 
     public function orders(Restaurant $restaurant)
     {
-        $orders = Order::where('restaurant_id', $restaurant->id)->get();
-        //dd($orders);
+        $orders = Order::where('restaurant_id', $restaurant->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
         return view('admin.restaurants.orders', compact('restaurant', 'orders'));
     }
 

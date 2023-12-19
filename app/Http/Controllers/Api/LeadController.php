@@ -18,11 +18,11 @@ class LeadController extends Controller
     {
         // validate
         $validator = Validator::make($request->all(), [
-            'name' => 'required|max:50',
+            'username' => 'required|max:50',
             'address' => 'required',
-            'email' => 'required|email',
+            'user_mail' => 'required|email',
             'phone' => 'required|regex:/^\+?[0-9]+$/',
-            'notes' => 'required|max:200',
+            'notes' => 'max:200',
         ]);
 
 

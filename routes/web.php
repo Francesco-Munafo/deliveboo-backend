@@ -37,7 +37,8 @@ Route::middleware('auth')
 
         Route::get('/restaurants/{restaurant}/orders', [RestaurantController::class, 'orders'])->name('restaurants.orders');
 
-        Route::resource('/orders', OrderController::class);
+        Route::get('/restaurants/{restaurant}/orders/{order}', [OrderController::class, 'show'])->name('restaurants.orders.show');
+
 
         Route::resource('/restaurants/{restaurant}/dishes', DishController::class)->parameters(['restaurant' => 'restaurant:slug', 'dish' => 'dish:slug'])->names([
             'index' => 'restaurant.dishes.index',

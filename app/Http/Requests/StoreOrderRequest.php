@@ -26,7 +26,7 @@ class StoreOrderRequest extends FormRequest
             'user_mail' => ['required', 'email'],
             'address' => ['required'],
             'phone' => ['required'],
-            'notes' => ['required', 'max:500'],
+            'notes' => ['nullable', 'max:500'],
             'cart' => ['required', 'array'],
             'total' => ['required'],
             'restaurant_id' => ['required'],

@@ -85,19 +85,20 @@
                 <table style="cursor: pointer;" class="table table-hover table-bordered text-center">
                     <thead class="bg-light">
                         <tr>
-                            <th class="col-1">Nome</th>
+                            <th class="col">Data e ora</th>
+                            <th class="col">Nome</th>
                             <th class="col">Email</th>
                             <th class="col">Indirizzo</th>
-                            <th class="col-2">telefono</th>
+                            <th class="col">telefono</th>
                             <th class="col">Totale</th>
                             <th class="col">pagamento</th>
-                            <th class="col-3">piatti</th>
-                            <th class="col-1">Note</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($orders as $order)
-                            <tr>
+                            <tr
+                                onclick="window.location='{{ route('admin.restaurants.orders.show', ['restaurant' => $restaurant, 'order' => $order]) }}';">
+                                <td>{{ $order->created_at }}</td>
                                 <td>{{ $order->username }}</td>
                                 <td>{{ $order->user_mail }}</td>
                                 <td>{{ $order->address }}</td>
@@ -107,20 +108,6 @@
                                     <td><i style="color: green" class="fa-solid fa-circle-check fs-4"></i></td>
                                 @else
                                     <td><i style="color: red" class="fa-solid fa-circle-xmark fs-4"></i></td>
-                                @endif
-
-                                <td>
-                                    @foreach ($order->dishes as $dish)
-                                        <h6>{{ $dish->name }}</h6>
-                                    @endforeach
-                                </td>
-
-
-
-                                @if ($order->notes !== '')
-                                    <td>{{ $order->notes }}</td>
-                                @else
-                                    <td>nessuna</td>
                                 @endif
                             </tr>
                         @endforeach
