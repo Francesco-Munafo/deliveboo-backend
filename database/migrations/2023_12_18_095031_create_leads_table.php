@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('user_mail');
             $table->string('address');
             $table->string('phone');
-            $table->text('notes');
+            $table->text('notes')->nullable();
             $table->timestamps();
         });
     }

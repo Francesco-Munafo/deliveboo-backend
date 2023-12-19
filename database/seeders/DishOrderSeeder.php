@@ -20,6 +20,8 @@ class DishOrderSeeder extends Seeder
         $dishes->each(function ($dish) use ($orders) {
             $numberOfOrders = rand(1, min(20, $orders->count()));
 
+
+
             $selectedOrders = $orders->shuffle()->take($numberOfOrders);
 
             if ($numberOfOrders > 0) {
@@ -28,7 +30,11 @@ class DishOrderSeeder extends Seeder
                     return in_array($order->id, $existingOrders);
                 });
 
-                $dish->orders()->attach($selectedOrders);
+
+                foreach ($selectedOrders as $order) {
+                    $qty = rand(1, 5); // Imposta la quantità
+                    $dish->orders()->attach([$order->id => ['qty' => $qty]]);
+                }
             }
         });
     }

@@ -30,7 +30,7 @@ class OrderSeeder extends Seeder
 
         $restaurants = Restaurant::all()->count();
 
-        for ($i = 0; $i < 1000; $i++) {
+        for ($i = 0; $i < 500; $i++) {
             $timestamp = $startYear->timestamp + rand(0, $seconds);
 
             $new_order = new Order();
