@@ -6,7 +6,7 @@
     <div class="container-lg px-sm-5">
         <div class="d-flex justify-content-between align-items-center mb-2">
             <span class="d-flex align-items-center gap-1">
-                <a class="d-none d-sm-block text-dark" href="{{ route('admin.restaurants.index') }}"><i
+                <a class="text-dark" href="{{ route('admin.restaurants.show', $restaurant) }}"><i
                         class="fa-solid fa-circle-arrow-left fs-3 me-2"></i></a>
                 <em class="d-flex align-items-center gap-1">
                     <a class="d-none d-md-block text-dark text-decoration-none"

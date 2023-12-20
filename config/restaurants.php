@@ -37,22 +37,6 @@ return [
         'description' => "Piatti tradizionali milanesi in un'atmosfera storica.",
     ],
     [
-        "name" => 'Trattoria Le Quattro Stagioni',
-        'address' => 'Via Verdi, 20',
-        'description' => 'Menu stagionale con ingredienti freschi e atmosfera familiare.',
-    ],
-    [
-        "name" => 'Ristorante La Terrazza',
-        'address' => 'Piazza Garibaldi, 8',
-        'description' => 'Cucina creativa e vista panoramica sulla città.',
-    ],
-    [
-        "name" => 'Osteria Vecchia Milano',
-        'address' => 'Via Montenapoleone, 15',
-        'description' => 'Piatti tradizionali milanesi in un atmosfera storica.',
-    ],
-
-    [
         "name" => 'Trattoria Bella Napoli',
         'address' => 'Via Vesuvio, 8',
         'description' => 'Autentici sapori partenopei in un atmosfera accogliente.',

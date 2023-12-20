@@ -3,8 +3,8 @@
 @section('content')
     <div class="container-lg px-sm-5">
         <div class="d-flex justify-content-between align-items-center mb-5">
-            <span class="d-none d-sm-flex align-items-center">
-                <a class="d-none d-sm-block text-dark" href="{{ route('admin.restaurants.orders', $restaurant) }}"><i
+            <span class="d-flex align-items-center">
+                <a class="text-dark" href="{{ route('admin.restaurants.orders', $restaurant) }}"><i
                         class="fa-solid fa-circle-arrow-left fs-3 me-2"></i></a>
 
                 <em>
@@ -53,14 +53,12 @@
                         </ul>
 
                         <p><strong>Note:</strong>
-                            @if ($order->notes !== '')
+                            @if ($order->notes)
                                 {{ $order->notes }}
                             @else
                                 Nessuna
                             @endif
                         </p>
-
-
                     </div>
                 </div>
             </div>

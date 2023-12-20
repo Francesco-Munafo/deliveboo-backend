@@ -3,8 +3,8 @@
 @section('content')
     <div class="container-lg px-sm-5">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <span class="d-none d-sm-flex align-items-center">
-                <a class="d-none d-sm-block text-dark" href="{{ route('admin.restaurants.index') }}"><i
+            <span class="d-flex align-items-center">
+                <a class="text-dark" href="{{ route('admin.restaurants.index') }}"><i
                         class="fa-solid fa-circle-arrow-left fs-3 me-2"></i></a>
 
                 <em>
@@ -14,8 +14,8 @@
                     <strong>
 
 
-                        <button class="btn p-0 m-0 border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                            aria-expanded="false"> <strong>{{ $restaurant->name }}</strong>
+                        <button class="d-none d-sm-block btn p-0 m-0 border-0 dropdown-toggle" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false"> <strong>{{ $restaurant->name }}</strong>
                         </button>
                         <div class="dropdown-menu bg_select_gradient rounded-bottom-5 rounded-end-5">
                             <div class="restaurant-card px-3 p-lg-4 d-flex gap-5 col-xxl-10">
