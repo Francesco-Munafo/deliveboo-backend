@@ -20,7 +20,7 @@ class UpdateDishRequest extends FormRequest
             'name' => 'required|min:2|max:50',
             'price' => 'required|min:0.10|regex:/^\d+(\.\d{1,2})?$/',
             'description' => 'nullable',
-            'image' => 'required|image',
+            'image' => 'nullable|image',
             'available' => 'required',
             'course' => 'required',
             'ingredients' => 'required',
