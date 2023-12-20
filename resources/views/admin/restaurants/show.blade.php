@@ -7,7 +7,7 @@
                 <a class="text-dark" href="{{ route('admin.restaurants.index') }}"><i
                         class="fa-solid fa-circle-arrow-left fs-3 me-2"></i></a>
 
-                <em>
+                <em class="d-flex gap-2">
                     <a class="text-dark text-decoration-none" href="{{ route('admin.restaurants.index') }}">
                         Ristoranti
                     </a> /
