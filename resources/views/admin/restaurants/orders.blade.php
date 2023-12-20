@@ -3,8 +3,8 @@
 @section('content')
     <div class="container-lg px-sm-5">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <span class="d-none d-sm-flex align-items-center">
-                <a class="d-none d-sm-block text-dark" href="{{ route('admin.restaurants.index') }}"><i
+            <span class="d-flex align-items-center">
+                <a class="text-dark" href="{{ route('admin.restaurants.index') }}"><i
                         class="fa-solid fa-circle-arrow-left fs-3 me-2"></i></a>
 
                 <em>
@@ -66,14 +66,6 @@
                     </strong>
                 </em>
             </span>
-
-            <button class="animated-button">
-                <a class="text-decoration-none" href="#" class="text-decoration-none d-flex align-items-center gap-1">
-                    <span><i class="fa-solid fa-chart-simple"></i> Statistiche</span>
-                    <span></span>
-                </a>
-
-            </button>
         </div>
 
         @if (count($orders) > 0)
