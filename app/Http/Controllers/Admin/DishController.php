@@ -106,6 +106,7 @@ class DishController extends Controller
     public function destroy(Restaurant $restaurant, Dish $dish)
     {
 
+        $dish->orders()->detach();
         $dish->delete();
 
         return to_route('admin.restaurants.show', ['restaurant' => $restaurant])->with('message', 'Piatto eliminato con successo!');
